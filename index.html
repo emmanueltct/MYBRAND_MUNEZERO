@@ -7,63 +7,71 @@
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/index.css"/>
+        
     </head>
     <body>
             
-            <div class="nav-bar">
+            <div class="nav-bar" id="nav-bar">
                 <div class="logo">
                     <div class="profile-logo"><h1 style="margin:20px;">E</h1></div>
                     <div class="profile-text">Emmanuel</div>
                 </div>
-                <ul class="link">
+                <ul class="link" id="link">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#blog">Blog</a></li>
-                    <li><a href="#contact"><button style="color:#FFFFFF">Contact</button></a></li>
+                    <li><a href="#contact">contact</a></li>
+                    <li><a href="login.html"><button style="color:#FFFFFF">Login</button></a></li>
                 </ul>
-                <div class="togle-menu"><img src="img/menu.svg" width="18px"></div>
             </div>
-        
+
+            <div class="togle-menu" id="togle-menu">
+                <button id="show-menu"><img src="img/menu.svg" width="18px"></button>
+                <button id="close-menu"> <i class="fa fa-close" style="font-size:30px;color:#A53DFF"></i></button>
+            </div>
             <section class="landingPage" style="overflow:hidden;">
                
                 <div class="elipse1"></div>
                 <div class="elipse2"></div>
                
                 <div class="landingPage-body" id="home">
-                    <div class="left-side">
-                        <p class="heading">
-                           Hello, I’m Emmanuel MUNEZERO
-                        </p>
-                        <p> 
-                            I'm a Freelance <s>UI/UX Designer</s> and <s>Developer</s> based in London, England. 
-                            I strives to build immersive and beautiful web applications through 
-                            carefully crafted code and user-centric design
-                        </p>
-                        
-                        <a href="#contact" class="hello-button">Say Hello !</a>
+                    <div class="home-container">
+                        <div class="left-side">
+                            <p class="heading">
+                                 Hello, I’m Emmanuel MUNEZERO
+                            </p>
+                            <p> 
+                                I'm a Freelance <s>UI/UX Designer</s> and <s>Developer</s> based in London, England. 
+                                I strives to build immersive and beautiful web applications through 
+                                carefully crafted code and user-centric design
+                            </p>
+                            
+                            <a href="#contact" class="hello-button">Say Hello !</a>
 
-                        <div class="summary-count" >
-                            <div class="count-container">
-                                <div class="count-heading">15 Y.</div>
-                                <div class="count-sub-title">Experience</div>
-                            </div>
-                            <div class="count-container" >
-                                <div class="count-heading">250+</div>
-                                <div class="count-sub-title">Project Completed</div>
-                            </div>
-                            <div class="count-container">
-                                <div class="count-heading">58</div>
-                                <div class="count-sub-title">Happy client</div>
+                            <div class="summary-count" >
+                                <div class="count-container">
+                                    <div class="count-heading">15 Y.</div>
+                                    <div class="count-sub-title">Experience</div>
+                                </div>
+                                <div class="count-container" >
+                                    <div class="count-heading">250+</div>
+                                    <div class="count-sub-title">Project Completed</div>
+                                </div>
+                                <div class="count-container">
+                                    <div class="count-heading">58</div>
+                                    <div class="count-sub-title">Happy client</div>
+                                </div>
                             </div>
                         </div>
+                        <div class="right-side profile-image" id="profile-image">
+                            <div class="my-image">
+                                <img src="img/profile1-removebg.png"/> 
+                            </div> 
+                        </div>  
                     </div>
-                    <div class="right-side profile-image">
-                        <img src="img/profile1-removebg.png" style="width:98%;"/> 
-                    </div>  
                 </div>
-                
                <div class="elipse3"></div> 
             </section>
 
@@ -75,9 +83,9 @@
                     <div class="about-photo">
                         <img src="img/profile1-removebg.png" style="width:100%;" />
                         <div class="social-media-icons">
-                            <span><img src="img/facebook.svg"></i></span>
-                            <span><img src="img/instagram.svg"></i></span>
-                            <span style="background-color: #A53DFF;width:100%;height:30px; width:30px;border-radius:10%;">
+                            <span><img src="img/facebook.svg" style="margin:25%;"></span>
+                            <span><img src="img/instagram.svg" style="margin:25%;"></span>
+                            <span style="background-color: #A53DFF;">
                              <img src="img/linkedin.svg" style="margin:25%;"/>
                             </span>
                         </div>
@@ -99,8 +107,8 @@
                             </p>
                         </div>
                         <div class="about-text-button">
-                            <button style="background-color:#A53DFF ;color:#FFFFFF">My Project</button>
-                            <button style="border-radius: 4px; border:1px solid  #A53DFF;background-color:#FFF; color:#A53DFF">Download CV</button>
+                            <a href="#portfolio" style="background-color:#A53DFF ;color:#FFFFFF">My Project</a>
+                            <a href="" style="border-radius: 4px; border:1px solid  #A53DFF;background-color:#FFF; color:#A53DFF">Download CV</a> 
                         </div>
                     </div> 
                 </div>
@@ -172,97 +180,97 @@
                 <div class="elipse4"></div>
                 <div class="elipse7"></div>
             <div class="portfolio-container" >
-                <div class="portfolio-header">
-                    <span>Portfolio</span>
-                    <p>
-                        There are many variations of passages of Lorem Ipsum available,but the majority have suffered alteration
-                    </p>
-                </div>
-                <div class="portfolio-card">
-                    <div class="project-card1">
-                        <div class="project" style="box-shadow: 0px 12px 34px 0px rgba(28, 25, 25, 0.12);">
-                            <img src="img/project/project1.png"/>
-                            <div class="project-description">
-                                <div class="project-description-header">
-                                    <span class="sub-title">UI-UX DESIGN</span>
-                                    <span class="main-title">Product Admin Dashboard</span>
+                    <div class="portfolio-header">
+                        <span>Portfolio</span>
+                        <p>
+                            There are many variations of passages of Lorem Ipsum available,but the majority have suffered alteration
+                        </p>
+                    </div>
+                    <div class="portfolio-card">
+                        <div class="project-card1">
+                            <div class="project" style="box-shadow: 0px 12px 34px 0px rgba(28, 25, 25, 0.12);">
+                                <img src="img/project/project1.png"/>
+                                <div class="project-description">
+                                    <div class="project-description-header">
+                                        <span class="sub-title">UI-UX DESIGN</span>
+                                        <span class="main-title">Product Admin Dashboard</span>
+                                    </div>
+                                    <p>
+                                        Vivamus eleifend convallis ante, non pharetra libero molestie laoreet. Donec id imperdiet lacus.
+                                    </p>
+                                    <button>Case Study <span><img src="img/right-arrow.svg" style="width: 24px;height: 24px;"/></span> </button>
                                 </div>
-                                <p>
-                                    Vivamus eleifend convallis ante, non pharetra libero molestie laoreet. Donec id imperdiet lacus.
-                                </p>
-                                <button>Case Study <span><img src="img/right-arrow.svg" style="width: 24px;height: 24px;"/></span> </button>
                             </div>
-                        </div>
-                        <div class="project">
-                            <img src="img/project/project2.png"/>
-                            <div class="project-description">
-                                <div class="project-description-header">
-                                    <span class="sub-title">UI-UX DESIGN</span>
-                                    <span class="main-title">Product Admin Dashboard</span>
+                            <div class="project">
+                                <img src="img/project/project2.png"/>
+                                <div class="project-description">
+                                    <div class="project-description-header">
+                                        <span class="sub-title">UI-UX DESIGN</span>
+                                        <span class="main-title">Product Admin Dashboard</span>
+                                    </div>
+                                    <p>
+                                        Vivamus eleifend convallis ante, non pharetra libero molestie laoreet. Donec id imperdiet lacus.
+                                    </p>
+                                    <button>Case Study <span><img src="img/right-arrow.svg" style="width: 24px;height: 24px;"/></span> </button>
                                 </div>
-                                <p>
-                                    Vivamus eleifend convallis ante, non pharetra libero molestie laoreet. Donec id imperdiet lacus.
-                                </p>
-                                <button>Case Study <span><img src="img/right-arrow.svg" style="width: 24px;height: 24px;"/></span> </button>
                             </div>
-                        </div>
-                        <div class="project">
-                            <img src="img/project/project3.png"/>
-                            <div class="project-description">
-                                <div class="project-description-header">
-                                    <span class="sub-title">UI-UX DESIGN</span>
-                                    <span class="main-title">Product Admin Dashboard</span>
+                            <div class="project">
+                                <img src="img/project/project3.png"/>
+                                <div class="project-description">
+                                    <div class="project-description-header">
+                                        <span class="sub-title">UI-UX DESIGN</span>
+                                        <span class="main-title">Product Admin Dashboard</span>
+                                    </div>
+                                    <p>
+                                        Vivamus eleifend convallis ante, non pharetra libero molestie laoreet. Donec id imperdiet lacus.
+                                    </p>
+                                    <button>Case Study <span><img src="img/right-arrow.svg" style="width: 24px;height: 24px;"/></span> </button>
                                 </div>
-                                <p>
-                                    Vivamus eleifend convallis ante, non pharetra libero molestie laoreet. Donec id imperdiet lacus.
-                                </p>
-                                <button>Case Study <span><img src="img/right-arrow.svg" style="width: 24px;height: 24px;"/></span> </button>
                             </div>
-                        </div>
-                   
-                        <div class="project">
-                            <img src="img/project/project4.png"/>
-                            <div class="project-description">
-                                <div class="project-description-header">
-                                    <span class="sub-title">UI-UX DESIGN</span>
-                                    <span class="main-title">Product Admin Dashboard</span>
+                    
+                            <div class="project">
+                                <img src="img/project/project4.png"/>
+                                <div class="project-description">
+                                    <div class="project-description-header">
+                                        <span class="sub-title">UI-UX DESIGN</span>
+                                        <span class="main-title">Product Admin Dashboard</span>
+                                    </div>
+                                    <p>
+                                        Vivamus eleifend convallis ante, non pharetra libero molestie laoreet. Donec id imperdiet lacus.
+                                    </p>
+                                    <button>Case Study <span><img src="img/right-arrow.svg" style="width: 24px;height: 24px;"/></span> </button>
                                 </div>
-                                <p>
-                                    Vivamus eleifend convallis ante, non pharetra libero molestie laoreet. Donec id imperdiet lacus.
-                                </p>
-                                <button>Case Study <span><img src="img/right-arrow.svg" style="width: 24px;height: 24px;"/></span> </button>
                             </div>
-                        </div>
-                        <div class="project">
-                            <img src="img/project/project5.png"/>
-                            <div class="project-description">
-                                <div class="project-description-header">
-                                    <span class="sub-title">UI-UX DESIGN</span>
-                                    <span class="main-title">Product Admin Dashboard</span>
+                            <div class="project">
+                                <img src="img/project/project5.png"/>
+                                <div class="project-description">
+                                    <div class="project-description-header">
+                                        <span class="sub-title">UI-UX DESIGN</span>
+                                        <span class="main-title">Product Admin Dashboard</span>
+                                    </div>
+                                    <p>
+                                        Vivamus eleifend convallis ante, non pharetra libero molestie laoreet. Donec id imperdiet lacus.
+                                    </p>
+                                    <button>Case Study <span><img src="img/right-arrow.svg" style="width: 24px;height: 24px;"/></span> </button>
                                 </div>
-                                <p>
-                                    Vivamus eleifend convallis ante, non pharetra libero molestie laoreet. Donec id imperdiet lacus.
-                                </p>
-                                <button>Case Study <span><img src="img/right-arrow.svg" style="width: 24px;height: 24px;"/></span> </button>
                             </div>
-                        </div>
-                        <div class="project">
-                            <img src="img/project/project6.png"/>
-                            <div class="project-description">
-                                <div class="project-description-header">
-                                    <span class="sub-title">UI-UX DESIGN</span>
-                                    <span class="main-title">Product Admin Dashboard</span>
+                            <div class="project">
+                                <img src="img/project/project6.png"/>
+                                <div class="project-description">
+                                    <div class="project-description-header">
+                                        <span class="sub-title">UI-UX DESIGN</span>
+                                        <span class="main-title">Product Admin Dashboard</span>
+                                    </div>
+                                    <p>
+                                        Vivamus eleifend convallis ante, non pharetra libero molestie laoreet. Donec id imperdiet lacus.
+                                    </p>
+                                    <button>Case Study <span><img src="img/right-arrow.svg" style="width: 24px;height: 24px;"/></span> </button>
                                 </div>
-                                <p>
-                                    Vivamus eleifend convallis ante, non pharetra libero molestie laoreet. Donec id imperdiet lacus.
-                                </p>
-                                <button>Case Study <span><img src="img/right-arrow.svg" style="width: 24px;height: 24px;"/></span> </button>
                             </div>
                         </div>
                     </div>
+                    <a href="#portfolio" class="more-project-button">More Project</a>
                 </div>
-                <button class="more-project-button">More Project</button>
-            </div>
             </section>
 
             <!-- this the starting point of call to action section ---------------------------->
@@ -294,70 +302,102 @@
                                 but the majority have suffered alteration.
                             </div>
                         </div>
-                    <div class="blog-card-container"> 
-                        <div class="blog-card" style="box-shadow: 0px 12px 64px 0px rgba(28, 25, 25, 0.12);">
-                            <img src="img/blog/blog1.png"/>
-                            <div class="blog-card-text">
-                                <div class="fun-fact">
-                                    <span>Published on: 22 Oct, 2020 </span>
+
+                        <div class="blog-container">
+                            <div class="slide-wraper">
+                                <button id="prev-slide" class=" slider-button materil-slider-button"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+                                <div class="image-list">
+                                    <div class="image-item">
+                                        <img src="img/blog/blog1.png"/>
+                                        <div class="blog-card-text">
+                                            <div class="fun-fact">
+                                                <span>Published on: 22 Oct, 2020 </span>
+                                            </div>
+                                            <div class="main-title"><a href="blog.html">the first blog title should be here</a></div>
+                                            <div class="single-blog-title">
+                                                Lorem ipsum dolor sit consea. Nulla purus arcu  property specifies 
+                                            </div>
+                                            <div class="fun-fact">
+                                                <span>13 <i class="fa fa-thumbs-up" style="font-size:15px; color:#A53DFF"></i> </span>
+                                                <span>2 <i class="fa fa-comments" style="font-size:15px; color:#A53DFF"></i></span>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="image-item">
+                                        <img src="img/blog/blog4.png"/>
+                                        <div class="blog-card-text">
+                                            <div class="fun-fact">
+                                                <span>Published on: 22 Oct, 2020 </span>
+                                            </div>
+                                            <div class="main-title"><a href="blog.html" >the  third blog title should be here</a></div>
+                                            <div class="single-blog-title">
+                                                Lorem ipsum dolor sit consea. Nulla purus arcu  property specifies 
+                                            </div>
+                                            <div class="fun-fact">
+                                                <span>13 <i class="fa fa-thumbs-up" style="font-size:15px; color:#A53DFF"></i> </span>
+                                                <span>2 <i class="fa fa-comments" style="font-size:15px; color:#A53DFF"></i></span>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="image-item">
+                                        <img src="img/blog/blog2.png" alt=""/>
+                                        <div class="blog-card-text">
+                                            <div class="fun-fact">
+                                                <span>Published on: 22 Oct, 2020 </span>
+                                            </div>
+                                            <div class="main-title"><a href="blog.html" >the  fourth blog title should be here</a></div>
+                                            <div class="single-blog-title">
+                                                Lorem ipsum dolor sit consea. Nulla purus arcu  property specifies 
+                                            </div>
+                                            <div class="fun-fact">
+                                                <span>13 <i class="fa fa-thumbs-up" style="font-size:15px; color:#A53DFF"></i> </span>
+                                                <span>2 <i class="fa fa-comments" style="font-size:15px; color:#A53DFF"></i></span>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="image-item">
+                                        <img src="img/blog/blog3.png" alt=""/>
+                                        <div class="blog-card-text">
+                                            <div class="fun-fact">
+                                                <span>Published on: 22 Oct, 2020 </span>
+                                            </div>
+                                            <div class="main-title"><a href="blog.html" >the fifth blog title should be here</a></div>
+                                            <div class="single-blog-title">
+                                                Lorem ipsum dolor sit consea. Nulla purus arcu  property specifies 
+                                            </div>
+                                            <div class="fun-fact">
+                                                <span>13 <i class="fa fa-thumbs-up" style="font-size:15px; color:#A53DFF"></i> </span>
+                                                <span>2 <i class="fa fa-comments" style="font-size:15px; color:#A53DFF"></i></span>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="image-item">
+                                        <img src="img/blog/blog4.png" alt=""/>
+                                        <div class="blog-card-text">
+                                            <div class="fun-fact">
+                                                <span>Published on: 22 Oct, 2020 </span>
+                                            </div>
+                                            <div class="single-blog-title">
+                                                Lorem ipsum dolor sit consea. Nulla purus arcu  property specifies 
+                                            </div>
+                                            <div class="fun-fact">
+                                                <span>13 <i class="fa fa-thumbs-up" style="font-size:15px; color:#A53DFF"></i> </span>
+                                                <span>2 <i class="fa fa-comments" style="font-size:15px; color:#A53DFF"></i></span>
+                                            </div>
+                                        </div> 
+                                    </div>
                                 </div>
-                                <div class="single-blog-title">
-                                    Lorem ipsum dolor sit consea. Nulla purus arcu  property specifies how overflowed content that is not displayed
-                                </div>
-                                <div class="fun-fact">
-                                    <span>13 <i class="fa fa-thumbs-up" style="font-size:15px; color:#A53DFF"></i> </span>
-                                    <span>2 <i class="fa fa-comments" style="font-size:15px; color:#A53DFF"></i></span>
+                                <button id="next-slide" class="slider-button"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+                            </div>
+                            <div class="slider-scrollbar">
+                                <div class="scrollbar-track">
+                                    <div class="scrollbar-thumb">
+                
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="blog-card">
-                            <img src="img/blog/blog2.png"/>
-                            <div class="blog-card-text">
-                                <div class="fun-fact">
-                                    <span>Published on: 22 Oct, 2020 </span>
-                                    
-                                </div>
-                                <div class="single-blog-title">
-                                    Lorem ipsum dolor sit consea. Nulla purus arcu
-                                </div>
-                                <div class="fun-fact">
-                                    <span>21 <i class="fa fa-thumbs-up" style="font-size:15px; color:#A53DFF"></i> </span>
-                                    <span>4 <i class="fa fa-comments" style="font-size:15px; color:#A53DFF"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="blog-card">
-                            <img src="img/blog/blog3.png"/>
-                            <div class="blog-card-text">
-                                <div class="fun-fact">
-                                    <span>Published on: 22 Oct, 2020 </span>
-                        
-                                </div>
-                                <div class="single-blog-title">
-                                    Lorem ipsum dolor sit consea. Nulla purus arcu
-                                </div>
-                                <div class="fun-fact">
-                                    <span>9 <i class="fa fa-thumbs-up" style="font-size:15px; color:#A53DFF"></i> </span>
-                                    <span>2 <i class="fa fa-comments" style="font-size:15px; color:#A53DFF"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="blog-card">
-                            <img src="img/blog/blog4.png"/>
-                            <div class="blog-card-text">
-                                <div class="fun-fact">
-                                    <span>Published on: 22 Oct, 2020 </span>
-                                </div>
-                                <div class="single-blog-title">
-                                    Lorem ipsum dolor sit consea. Nulla purus arcu
-                                </div>
-                                <div class="fun-fact">
-                                    <span>20 <i class="fa fa-thumbs-up" style="font-size:15px; color:#A53DFF"></i> </span>
-                                    <span>7 <i class="fa fa-comments" style="font-size:15px; color:#A53DFF"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 
                     <div style="display: flex;align-items: flex-start;gap:2px;">
                         <span style="width: 30px;height: 8px;border-radius: 100px;background:#210C33;"></span>
@@ -587,3 +627,7 @@
         
     </body>
 </html>
+
+
+<script src="js/nav.js"></script>
+<script src="js/slide.js"></script>
