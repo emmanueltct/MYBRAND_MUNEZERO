@@ -61,8 +61,12 @@ const menu= document.getElementById('nav-bar');
 window.addEventListener('scroll', function() {  
     if (window.scrollY > 0) {
         menu.style.backgroundColor="#edf1f7";
-       
+        document.getElementById("show-menu").style.backgroundColor="#edf1f7";
+        document.getElementById("close-menu").style.backgroundColor="#edf1f7";
     }else{
-        menu.style.backgroundColor="#FFF";  
+
+        menu.style.backgroundColor="#FFF";
+        document.getElementById("show-menu").style.backgroundColor="#FFF";
+        document.getElementById("close-menu").style.backgroundColor="#FFF";  
     } 
 })

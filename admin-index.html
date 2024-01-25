@@ -8,12 +8,24 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/admin-panel.css"/>
     </head>
-    <body>
+    <body onresize="myFunction()">
     <div class="container">
-        <div class="left-side">
+        <div class="left-side" id="left-side">
             <div class="user-profile">
                 <div class="profile-image"><div>E</div></div>
                 <div class="user-profile-text">Emmanuel</div>
+            </div>
+            <div class="left-side-menu">
+                <div class="menu">
+                    <div class="menu-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="15" viewBox="0 0 35 31" fill="none">
+                            <path d="M32.0833 0.1875H2.91667C1.30642 0.1875 0 1.65723 0 3.46875V27.5312C0 29.3428 1.30642 30.8125 2.91667 30.8125H32.0833C33.6936 30.8125 35 29.3428 35 27.5312V3.46875C35 1.65723 33.6936 0.1875 32.0833 0.1875ZM10.6944 6.74999C12.8394 6.74999 14.5833 8.71191 14.5833 11.125C14.5833 13.5381 12.8394 15.5 10.6944 15.5C8.54948 15.5 6.80556 13.5381 6.80556 11.125C6.80556 8.71191 8.54948 6.74999 10.6944 6.74999ZM17.5 22.9375C17.5 23.6621 16.8924 24.25 16.1389 24.25H5.25C4.49653 24.25 3.88889 23.6621 3.88889 22.9375V21.625C3.88889 19.4512 5.71788 17.6875 7.97222 17.6875H8.27604C9.02344 18.0361 9.83767 18.2344 10.6944 18.2344C11.5512 18.2344 12.3715 18.0361 13.1128 17.6875H13.4167C15.671 17.6875 17.5 19.4512 17.5 21.625V22.9375ZM31.1111 19.3281C31.1111 19.6289 30.8924 19.875 30.625 19.875H21.875C21.6076 19.875 21.3889 19.6289 21.3889 19.3281V18.2344C21.3889 17.9336 21.6076 17.6875 21.875 17.6875H30.625C30.8924 17.6875 31.1111 17.9336 31.1111 18.2344V19.3281ZM31.1111 14.9531C31.1111 15.2539 30.8924 15.5 30.625 15.5H21.875C21.6076 15.5 21.3889 15.2539 21.3889 14.9531V13.8594C21.3889 13.5586 21.6076 13.3125 21.875 13.3125H30.625C30.8924 13.3125 31.1111 13.5586 31.1111 13.8594V14.9531ZM31.1111 10.5781C31.1111 10.8789 30.8924 11.125 30.625 11.125H21.875C21.6076 11.125 21.3889 10.8789 21.3889 10.5781V9.48437C21.3889 9.18359 21.6076 8.93749 21.875 8.93749H30.625C30.8924 8.93749 31.1111 9.18359 31.1111 9.48437V10.5781Z" fill="black"/>
+                        </svg>
+                    </div>
+                    <div class="menu-text">
+                        <a href="admin-index.html">Dashboard</a>
+                    </div>
+                </div>
             </div>
             <div class="left-side-menu">
                 <div class="menu">
@@ -28,7 +40,7 @@
                     <span ><i class="fa fa-caret-down" aria-hidden="true" style="font-size:30px;"></i></span>
                 </div>
                 <ul class="dropdown-menu">
-                    <li><a href="#"><span><i class="fa fa-plus" aria-hidden="true"></i></span> <span>Add Article</span></a></li>
+                    <li><a href="new-article.html"><span><i class="fa fa-plus" aria-hidden="true"></i></span> <span>Add Article</span></a></li>
                     <li><a href="admin-blog-list.html"><span><i class="fa fa-eye" aria-hidden="true"></i></span> <span>view Articles</span></a></li>
                 </ul>
             </div>
@@ -41,7 +53,7 @@
                         </svg>
                     </div>
                     <div class="menu-text">
-                        Queries
+                        <a href="admin-queries.html"> Queries</a>
                     </div>
                 </div>
             </div>
@@ -58,22 +70,12 @@
                     </div>
                 </div>
             </div>
-            <div class="left-side-menu">
-                <div class="menu">
-                    <div class="menu-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="15" viewBox="0 0 35 31" fill="none">
-                            <path d="M32.0833 0.1875H2.91667C1.30642 0.1875 0 1.65723 0 3.46875V27.5312C0 29.3428 1.30642 30.8125 2.91667 30.8125H32.0833C33.6936 30.8125 35 29.3428 35 27.5312V3.46875C35 1.65723 33.6936 0.1875 32.0833 0.1875ZM10.6944 6.74999C12.8394 6.74999 14.5833 8.71191 14.5833 11.125C14.5833 13.5381 12.8394 15.5 10.6944 15.5C8.54948 15.5 6.80556 13.5381 6.80556 11.125C6.80556 8.71191 8.54948 6.74999 10.6944 6.74999ZM17.5 22.9375C17.5 23.6621 16.8924 24.25 16.1389 24.25H5.25C4.49653 24.25 3.88889 23.6621 3.88889 22.9375V21.625C3.88889 19.4512 5.71788 17.6875 7.97222 17.6875H8.27604C9.02344 18.0361 9.83767 18.2344 10.6944 18.2344C11.5512 18.2344 12.3715 18.0361 13.1128 17.6875H13.4167C15.671 17.6875 17.5 19.4512 17.5 21.625V22.9375ZM31.1111 19.3281C31.1111 19.6289 30.8924 19.875 30.625 19.875H21.875C21.6076 19.875 21.3889 19.6289 21.3889 19.3281V18.2344C21.3889 17.9336 21.6076 17.6875 21.875 17.6875H30.625C30.8924 17.6875 31.1111 17.9336 31.1111 18.2344V19.3281ZM31.1111 14.9531C31.1111 15.2539 30.8924 15.5 30.625 15.5H21.875C21.6076 15.5 21.3889 15.2539 21.3889 14.9531V13.8594C21.3889 13.5586 21.6076 13.3125 21.875 13.3125H30.625C30.8924 13.3125 31.1111 13.5586 31.1111 13.8594V14.9531ZM31.1111 10.5781C31.1111 10.8789 30.8924 11.125 30.625 11.125H21.875C21.6076 11.125 21.3889 10.8789 21.3889 10.5781V9.48437C21.3889 9.18359 21.6076 8.93749 21.875 8.93749H30.625C30.8924 8.93749 31.1111 9.18359 31.1111 9.48437V10.5781Z" fill="black"/>
-                        </svg>
-                    </div>
-                    <div class="menu-text">
-                        <a href="admin-index.html">Registration</a>
-                    </div>
-                </div>
-            </div>
         </div>
-        <div class="right-side">
+        <div class="right-side" id="right-side">
             <div class="user-info">
                 <div class="user-info-box1">
+                    <button id="show-menu" onclick="showMenu()"><img src="img/menu.svg" width="18px"></button> 
+                    <button id="close-menu"  onclick="closeMenu()"><i class="fa fa-close" style="font-size:30px;color:#A53DFF"></i></button>
                     <div class="user">Munezero Emmanuel</div>
                     <a href="index.html"><button class="logout">logout</button></a>
                 </div>
@@ -117,7 +119,7 @@
                         </div>
                         <div class="card-text">
                             <span class="numbers">21</span>
-                            <span class="sub-title">Blog Posts </span>
+                            <span class="sub-title">Article Posts</span>
                         </div>
                     </div>
                 </div>
@@ -130,3 +132,4 @@
     </body>
 </html>
 
+<script src="js/admin-menu.js"></script>

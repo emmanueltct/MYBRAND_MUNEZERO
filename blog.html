@@ -31,14 +31,17 @@
                 color:  #132238;
                 text-align: center;
                 font-family: "Work Sans";
-                font-size: 40px;
-                font-style: normal;
-                font-weight: 500;
+                font-size: 30px;
+                font-style:normal;
+                font-weight: bolder;
                 line-height: 44px;
                 text-wrap: wrap;
                 word-wrap: break-word;
                 padding-bottom:3%;
                 
+            }
+            .blog-title:hover{
+                text-decoration: underline;
             }
             .blog-thumbnail{
                 display:flex;
@@ -49,9 +52,15 @@
               
             }
             .image-container{
+                display:flex;
                 width:100%;
                 height:300px;
+                background-color: red;
                 overflow:hidden;
+            }
+            .blog-image{
+                object-fit: cover;
+                width: 100%;
             }
             .blog-count{
                 display:flex;
@@ -62,6 +71,7 @@
                 flex-wrap:wrap;
                 padding-top:2%;
                 padding-bottom:10%;
+                
             }
 
             .comment-date{
@@ -69,7 +79,7 @@
                 align-items:center;
                 justify-content: space-between;
                 gap:10px;
-                width:20%;
+                width:40%;
                 padding:1% 3%;
                 color: #87909D;
                 font-family: Work Sans;
@@ -83,13 +93,14 @@
             }
 
             .comment-count{
-                width:15%;
+                width:45%;
                 display:flex;
                 align-items:center;
                 justify-content: flex-end;
                 gap:10px;
                 padding:1% 3%;
                 flex-wrap:wrap; 
+            
               
             }
             .comment-count span{
@@ -110,11 +121,12 @@
             }
             .blog-text{
                 width:100%;
-                margin-top:0px;
+                margin-top:-50px;
                 display: flex;
                 flex-direction: column;
                 align-content: flex-start;
                 gap:10px;
+                
                 
             }
             .blog-text p{
@@ -125,6 +137,7 @@
                 font-style: normal;
                 font-weight: 400;
                 line-height: 24px; 
+                text-align: justify;
                 margin-top:0;
             }
 
@@ -179,7 +192,7 @@
             .comment-input-section-email{
                 width:100%;
                 display: flex;
-                padding: 0px 1px;
+                padding: 10px 1px;
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-start;
@@ -269,6 +282,18 @@
                 text-wrap: wrap;
             }
 
+            .sender-message .showmore{
+                color:blue;
+                cursor: pointer;
+                display: none;
+            }
+
+            .sender-message .showless{
+                color:red;
+                cursor: pointer;
+                display: none;
+            }
+
             .sender-profile{
                 display: flex;
                 width:55%;
@@ -326,6 +351,11 @@
                 }
                 .image-container{
                     height:auto;
+                }
+                .blog-count{
+                    flex-direction: column-reverse;
+                    align-items:center;
+                    padding-bottom:17%;
                 }
                 .comment-count{
                     width:45%;
@@ -398,6 +428,7 @@
                 .blog-count{
                     flex-direction: column-reverse;
                     align-items:center;
+                    padding-bottom:70px;
                 }
                 .comment-count{
                     width:80%;
@@ -410,24 +441,58 @@
                 }
             }
 
+
+                .checkbox-in{
+                    display:none;
+                }
+                
+                .sent-message-full{
+                    display:none;
+                    transition: 0.5s linear;
+                }
+                label{
+                    display:inline-block;
+                    margin-top:-20px;
+                    align-self: self-start;
+                    font-size:15px;
+                    cursor:pointer;
+                    color:#A53DFF
+                }
+                .checkbox-in:checked ~ .sent-message-full{
+                    display:flex;
+                }
+                .checkbox-in:checked ~ .sent-message{
+                    display:none;
+                }
+                .checkbox-in:checked ~ label{
+                   visibility:hidden;
+                }
+                .checkbox-in:checked ~ label:after{
+                    content:"show less";
+                   visibility:visible;
+                   display:flex;
+                   color:red;
+                   margin-top:-20px;
+                }
+                
         </style>
     </head>
 <body>
 
 </body>
 <html>
-    <div class="nav-bar">
+    <div class="nav-bar" id="nav-bar">
         <div class="logo">
             <div class="profile-logo"><h1 style="margin:20px;">E</h1></div>
             <div class="profile-text">Emmanuel</div>
         </div>
         <ul class="link" id="link">
             <li><a href="index.html">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#blog">Blog</a></li>
-            <li><a href="#contact">contact</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#skills">Skills</a></li>
+            <li><a href="index.html#portfolio">Portfolio</a></li>
+            <li><a href="index.html#blog">Blog</a></li>
+            <li><a href="index.html#contact">contact</a></li>
             <li><a href="login.html"><button style="color:#FFFFFF">Login</button></a></li>
         </ul>
     </div>
@@ -440,11 +505,11 @@
     <div class="container">
         <div class="single-blog-section">
             <div class="blog-title">
-                This a title of my first blog, thank you for reading my post 
+                <h3>This a title of my first blog, thank you for reading my post</h3> 
             </div>
             <div class="blog-thumbnail">
                 <div class="image-container">
-                    <img src="img/blog/blog1.png" style="width:100%"/> 
+                    <img src="img/blog/blog1.png" class="blog-image"/> 
                 </div>
                 <div class="blog-count">
                     <div class="comment-date">Posted on:2022-01-11</div>
@@ -514,11 +579,18 @@
                         </div>
                     </div>
                     <div class="sender-message">
-                        Lorem ipsum dolor sit amet, consectetur 
-                        adipiscing elit. Nulla purus arcu, varius 
-                        eget velit non, laoreet imperdiet orci. 
-                        Mauris ultrices eget lorem ac vestibulum. 
-                        Suspendis imperdiet, Lorem ipsum dolor
+                            <input type="checkbox" class="checkbox-in" id="ch0" />
+                            <span class="sent-message"> 
+                                <!-- this work on less text --> 
+                            </span>
+                            <span class="sent-message-full">
+                            Lorem ipsum dolor sit amet, consectetur 
+                            adipiscing elit. Nulla purus arcu, varius 
+                            eget velit non, laoreet imperdiet orci. 
+                            Mauris ultrices eget lorem ac vestibulum. 
+                            Suspendis imperdiet, Lorem ipsum dolor
+                        </span>
+                        <label for="ch0">Read more</label> 
                     </div>
                 </div>
                 <div class="user-comment">
@@ -532,17 +604,22 @@
                         </div>
                     </div>
                     <div class="sender-message">
-                        Lorem ipsum dolor sit amet, consectetur 
-                        adipiscing elit. Nulla purus arcu, varius 
-                        eget velit non, laoreet imperdiet orci. 
-                        Mauris ultrices eget lorem ac vestibulum. 
-                        Suspendis imperdiet, Lorem ipsum dolor
+                        <input type="checkbox" class="checkbox-in" id="ch1" />
+                        <span class="sent-message">
+                           <!-- this work on less text -->
+                        </span>
+                        <span class="sent-message-full">
+                            Lorem ipsum dolor sit amet, consectetur 
+                            adipiscing elit
+                        </span>
+                        <label for="ch1">Read more</label>
                     </div>
                 </div>
+
                 <div class="user-comment">
                     <div class="sender-profile">
                         <div class="profile-container">
-                           <!-- <div class="sender-image"></div>-->
+                            <div class="sender-image"></div>
                             <div class="sender-info">
                                 <span>Emmanuel Munezero</span>
                                 <span style="font-size:14px;margin-top:-15px">2024-01-15 12:00 </span>
@@ -550,11 +627,64 @@
                         </div>
                     </div>
                     <div class="sender-message">
-                        Lorem ipsum dolor sit amet, consectetur 
-                        adipiscing elit. Nulla purus arcu, varius 
-                        eget velit non, laoreet imperdiet orci. 
-                        Mauris ultrices eget lorem ac vestibulum. 
-                        Suspendis imperdiet, Lorem ipsum dolor
+                        <input type="checkbox" class="checkbox-in" id="ch2" />
+                        <span class="sent-message">
+                           <!-- this work on less text -->
+                        </span>
+                        <span class="sent-message-full">
+                            Lorem ipsum dolor sit amet, consectetur 
+                           
+                        </span>
+
+                        <label for="ch2">Read more</label>
+                    </div>
+                </div>
+
+                <div class="user-comment">
+                    <div class="sender-profile">
+                        <div class="profile-container">
+                            <div class="sender-image"></div>
+                            <div class="sender-info">
+                                <span>Emmanuel Munezero</span>
+                                <span style="font-size:14px;margin-top:-15px">2024-01-15 12:00 </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sender-message">
+                        <input type="checkbox" class="checkbox-in" id="ch3" />
+                        <span class="sent-message">
+                            <!-- this work on less text -->
+                        </span>
+                        <span class="sent-message-full">
+                            Lorem ipsum dolor sit amet, consectetur 
+                            adipiscing elit.method inserts a set of Node objects or string objects after the last child of the
+                        </span>
+
+                        <label for="ch3">Read more</label>
+                    </div>
+                </div>
+
+                <div class="user-comment">
+                    <div class="sender-profile">
+                        <div class="profile-container">
+                            <div class="sender-image"></div>
+                            <div class="sender-info">
+                                <span>Emmanuel Munezero</span>
+                                <span style="font-size:14px;margin-top:-15px">2024-01-15 12:00 </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sender-message">
+                        <input type="checkbox" class="checkbox-in" id="ch4" />
+                        <span class="sent-message">
+                           <!-- this work on less text -->
+                        </span>
+                        <span class="sent-message-full">
+                            Lorem ipsum dolor sit amet, consectetur 
+                            adipiscing elit.method inserts a set of Node objects or string objects after the last child of the
+                        </span>
+
+                        <label for="ch4">Read more</label>
                     </div>
                 </div>
              </div>
@@ -571,3 +701,33 @@
 
 
 <script src="js/nav.js"></script>
+
+<script>
+    const userComment=document.getElementsByClassName("sender-message");
+    var length=userComment.length;
+
+for(var i=0;i<length;i++){
+    var innerblock=userComment[i].childNodes[5].innerText;
+     var lessTexT=userComment[i].childNodes[3];
+     var checkbox=userComment[i].childNodes[1];
+     var showButton=userComment[i].childNodes[7];
+     //console.log(userComment[i].childNodes);
+
+     let newStr = innerblock.replace(/\s+/g, ' ');
+    
+
+    if(newStr.length>50){
+        var newText=newStr.trim().substring(0,50)+".....";  
+        lessTexT.innerText=newText;
+    }else{
+       lessTexT.style.display="none" ;
+       showButton.style.display="none";
+       userComment[i].childNodes[5].innerText=newStr
+       userComment[i].childNodes[5].style.display="flex";
+    }
+
+      
+    };
+    
+    
+</script>

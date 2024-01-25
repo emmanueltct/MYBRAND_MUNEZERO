@@ -1,16 +1,18 @@
 <html>
     <head>
-        
         <meta charset='utf-8'>
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
         <title> My Brand page</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="richtexteditor/rte_theme_default.css" />
+		<script type="text/javascript" src="richtexteditor/rte.js"></script>
+		<script type="text/javascript" src='richtexteditor/plugins/all_plugins.js'></script>
+
         <link rel="stylesheet" href="css/admin-panel.css"/>
         <style>
-
-        .single-blog-section{
-            width:74%;
+        .blog-form-container{
+            width:100%;
             margin:auto;
             display:flex;
             flex-direction: column;
@@ -18,130 +20,59 @@
             padding:5% 0%;
             gap:15px;
         }
-        .blog-title{
-            width:100%;
-            display: flex;
-            flex-direction: column;
-            color:  #132238;
+        .page-title{
+            color: #333;
+            margin:2%;
             text-align: center;
             font-family: "Work Sans";
-            font-size: 40px;
+            font-size: 32px;
             font-style: normal;
-            font-weight: 500;
-            line-height: 44px;
-            text-wrap: wrap;
-            word-wrap: break-word;
-            
+            font-weight: 700;
+            line-height: 44px; 
         }
-        .blog-thumbnail{
-            display:flex;
-            align-items:center;
+        .article-form{
+            display: flex;
+            width:100%;
+            padding: 27px 30px;
             flex-direction: column;
-            justify-content: space-between;
-            width:100%;
-          
-        }
-        .image-container{
-            width:100%;
-            height:300px;
-            overflow:hidden;
-        }
-        .blog-count{
-            display:flex;
             align-items:center;
-            justify-content: space-between;
-            gap:10px;
-            width:100%;
-            flex-wrap:wrap;
-         
+            justify-content: center;
+            gap: 33px;
+            flex-shrink: 0;
+            align-self: stretch;
+            border-radius: 20px;
+            background: #FFF;
+            box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
         }
-
-        .comment-date{
+        .form-container{
+            display: flex;
+            width:80%;
+            justify-content: center;
+            align-items: center;
+        }
+        .input-section{
+            width:100%;
             display:flex;
-            align-items:center;
-            justify-content: space-between;
-            gap:10px;
-            width:20%;
-            padding:1% 3%;
-            color: #87909D;
-            font-family: Work Sans;
-            font-size: 14px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px; 
+            overflow: auto;
+        }
+        .input-section label{
+            color: #000;
+            font-family: "Work Sans";
+            font-size: 16px;
             font-style: normal;
             font-weight: 400;
-            line-height: 20px;
-            text-wrap: wrap;
-            word-wrap: break-word;
-          
+            line-height: 20px; /* 150% */
         }
-        .comment-action-button{
-            width:25%;
-            display:flex;
-            align-content: flex-start;
-            justify-content: space-between;
-            gap:10px;
-            padding:2% 3%;
-            flex-wrap:wrap;  
-        }
-
-        .comment-action-button button{
-            display: flex;
-            border-radius: 4px;
-            justify-content: space-between;
-            align-items: center; 
-            padding:3%;
-            font-size: 14px;
-            gap:10px;
-            flex-wrap: wrap;
-            color: #fff;
-            border: none;
-        }
-
-        .comment-count{
-            width:15%;
-            display:flex;
-            align-items:center;
-            justify-content: space-around;
-            gap:10px;
-            padding:1% 3%;
-            flex-wrap:wrap; 
-          
+        .input-section input{
+            height:40px;
+            width:100%;
+            border-radius: 10px;
+            border: 1px solid #000; 
         }
        
-        .comment-count span{
-            display:flex;
-            align-items:center;
-            justify-content: space-evenly;
-            gap:10px;
-            padding:2%;
-            flex-wrap:wrap;
-            color: #87909D;
-            font-family: Work Sans;
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 20px;
-            text-wrap: wrap;
-             
-        }
-        .blog-text{
-            width:100%;
-            margin-top:0px;
-            display: flex;
-            flex-direction: column;
-            align-content: flex-start;
-            gap:10px;
-            
-        }
-        .blog-text p{
-            width:100%;
-            color:#697484;
-            font-family: Work Sans;
-            font-size: 18px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 24px; 
-            margin-top:0;
-        }
     </style>
     </head>
     <body>
@@ -189,7 +120,7 @@
                         </svg>
                     </div>
                     <div class="menu-text">
-                        <a href="admin-queries.html"> Queries</a>
+                      <a href="admin-queries.html"> Queries</a>
                     </div>
                 </div>
             </div>
@@ -207,8 +138,9 @@
                 </div>
             </div>
         </div>
-        <div class="right-side" id="right-side">
+        <div class="right-side" id="right-side" >
             <div class="user-info">
+                
                 <div class="user-info-box1">
                     <button id="show-menu" onclick="showMenu()"><img src="img/menu.svg" width="18px"></button> 
                     <button id="close-menu"  onclick="closeMenu()"><i class="fa fa-close" style="font-size:30px;color:#A53DFF"></i></button>
@@ -216,74 +148,43 @@
                     <a href="index.html"><button class="logout">logout</button></a>
                 </div>
             </div>
-            <div class="single-blog-section">
-                <div class="blog-title">
-                    This a title for my first article, thank you for reading  
-                </div>
-                <div class="blog-thumbnail">
-                    <div class="image-container">
-                        <img src="img/blog/blog1.png" style="width:100%"/> 
+            <div class="blog-form-container">
+               <div class="page-title">
+                <h3>post new article / blog here</h3>
+               </div>
+               <div class="form-container">
+                <div class="article-form">
+                    <div class="input-section">
+                        <label>Blog Title:</label>
+                        <input type="" value=""/>
                     </div>
-                    <div class="blog-count">
-                        <div class="comment-action-button">
-                            <button style="background-color:#A53DFF;"><span><i class="fa fa-pencil" ></i></span> Edit</button> 
-                             <button style="background-color:#8C1919;"><span><i class="fa fa-trash" ></i></span> Delete</button>
-                         </div>
-                         <div class="comment-date">Posted on:2022-01-11</div>
-                        <div class="comment-count">
-                            <span>5<i class="fa fa-thumbs-up" style="font-size:20px; color:#A53DFF"></i></span>
-                             <span>10<i class="fa fa-comments" style="font-size:20px; color:#A53DFF"></i></span>
-                        </div>
-                        
+                    <div class="input-section">
+                        <label>Blog Thumbnail:</label>
+                        <input type="file" value=""/>
                     </div>
-
-                </div>
-                <div class="blog-text">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla purus arcu, varius eget velit non, laoreet 
-                        imperdiet orci. Mauris ultrices eget lorem ac vestibulum. Suspendis imperdiet, Lorem ipsum dolor sit amet, 
-                        consectetur adipiscing elit. Nulla purus arcu, varius eget velit non.Lorem ipsum dolor sit amet, consectetur 
-                        adipiscing elit. Nulla purus arcu, varius eget velit non
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla purus arcu, varius eget velit non, laoreet 
-                        imperdiet orci. Mauris ultrices eget lorem ac vestibulum. Suspendis imperdiet, Lorem ipsum dolor sit amet, 
-                        consectetur adipiscing elit. Nulla purus arcu, varius eget velit non.Lorem ipsum dolor sit amet, consectetur 
-                        adipiscing elit. Nulla purus arcu, varius eget velit non.Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Nulla purus arcu, varius eget velit non, laoreet imperdiet orci. Mauris ultrices eget lorem ac vestibulum. 
-                        Suspendis imperdiet, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla purus arcu, varius eget velit 
-                        non.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla purus arcu, varius eget velit non.
-                        
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla purus arcu, varius eget velit non, laoreet 
-                        imperdiet orci. Mauris ultrices eget lorem ac vestibulum. Suspendis imperdiet, Lorem ipsum dolor sit amet, 
-                        consectetur adipiscing elit. Nulla purus arcu, varius eget velit non.Lorem ipsum dolor sit amet, consectetur 
-                        adipiscing elit. Nulla purus arcu, varius eget velit non  
-                    </p>
+                    <div class="input-section">
+                        <label>Elaborate more on your topic:</label>
+                        <textarea id="inp_editor1">
+                        </textarea>
+                    </div>
                 </div>
             </div>
+        </div>
+        </div>
         </div> 
     </div>
       
     <div class="footer-section">
         Copyright © 2022 Emmanuel
-        <p id="demo"></p>
     </div>  
     </body>
 </html>
 
-
-
 <script src="js/admin-menu.js"></script>
-
 <script>
-   /*
-        const menu= document.getElementById('left-side');
-
-    window.addEventListener('scroll', function() {  
-    if (window.scrollY > 0) {
-        menu.style.position="fixed";
-       
-    } 
-    });
-    */
+    
+    var editor1 = new RichTextEditor("#inp_editor1");
+    /// var editor1 = new RichTextEditor("#div_editor1", { editorResizeMode:"both"  });
 </script>
+
+

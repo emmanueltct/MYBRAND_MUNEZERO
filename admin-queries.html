@@ -1,0 +1,492 @@
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <title> My Brand page</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/admin-panel.css"/>
+        <style>
+
+        .queries-container{
+            width:100%;
+            margin:auto;
+            display:flex;
+            flex-direction: column;
+            align-items:center;
+            padding:5% 0%;
+            gap:15px;
+        }
+        .page-title{
+            color: #333;
+            margin:2%;
+            text-align: center;
+            font-family: "Work Sans";
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 44px; 
+        }
+        .queries-list{
+                display: flex;
+                width:70%;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 35px;
+                border-radius: 10px;
+            }
+
+            .user-query{
+                display: flex;
+                width:100%;
+                justify-content: center;
+                align-items: center;
+                gap: 35px;
+                border-radius: 10px;
+                padding:2% 4%;
+                /*background: #FFF; */
+                
+            }
+
+            .sender-message{
+                display: flex;
+                width:55%;
+                padding: 5px 20px;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 15px;
+                flex-shrink: 0;
+                border-left: 1px solid #000;
+                
+            }
+            .sender-message .sender-message-subject{
+                display: flex;
+                justify-content: center;
+                width:100%;
+                color: #1D1B1B;
+                text-align: center;
+                font-family: "Work Sans";
+                font-size: 18px;
+                font-style: normal;
+                text-align: center;
+                font-weight: 500;
+                line-height: 30px; 
+            }
+            .sender-message .sender-message-line{
+                height:2px;
+                width:40%;
+                background-color:#697484;
+            }
+            .sender-message .sender-message-text{
+                display: flex;
+                width:100%;
+                color:#697484;
+                font-family: "Work Sans";
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 24px; 
+                text-wrap: wrap;
+            }
+
+            .sender-profile{
+                display: flex;
+                width:40%;
+                flex-direction: column;
+                padding: 3px;
+                justify-content:space-around;
+                align-items:center;
+                
+            }
+
+            .profile-container{
+                display: flex;
+                width:100%;
+                padding: 10px 12px;
+                justify-content:space-around;
+                align-items:flex-start;
+                border-bottom: 1px dashed #000;
+            }
+
+            .sender-info{
+                display: flex;
+                width:100%;
+                padding:0 0;
+                flex-direction: column;
+                justify-content: center;
+                align-items:flex-start;
+                gap: 10px;
+
+            }
+            .sender-info span{
+                color: #000;
+                text-align: center;
+                font-family: "Work Sans";
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 30px; 
+               
+            }
+            .sender-info .budget-span{
+                width:100%;
+            }
+            .sender-contact{
+                display: flex;
+                width:100%;
+                padding:3%;
+                flex-direction:column;
+                justify-content:center;
+                align-items:flex-start;
+                gap: 10px;
+                flex-shrink: 0;
+                
+            }
+           .sender-contact-address{
+            color: #000;
+            font-family: "Work Sans";
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 15px; 
+            text-align: center;
+            text-wrap: wrap;
+           }
+
+           .sender-contact-mail{
+            color: #000;
+            text-align: center;
+            font-family: "Work Sans";
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 15px;  
+            text-align: center;
+            text-wrap: wrap ;
+           }
+           .sender-contact-mail span i , .sender-contact-address span i{
+            color:#000;
+            font-size:18px;
+            padding-right:10px;
+           }
+            
+
+
+           @media(max-width:1050px){
+                .queries-list{
+                    width:90%;
+                }
+                .user-query{
+                    width:100%;
+                    
+                }
+                .sender-message{
+                    width:60%;
+                    padding:0 ;
+                    margin-top:-25;
+                    text-align: justify;
+                    padding-left:10px;
+                }
+                .sender-profile{
+                    width:40%;
+                    padding:0;
+                }
+                .profile-container{
+                    padding:0;
+                    width:100%;
+                }
+                .sender-contact{
+                    width:100%;
+                    
+                }
+               
+              
+             }
+
+            @media(max-width:820px){
+            .queries-list{
+                width:90%;
+                display:flex;
+                flex-direction:column;
+                 }  
+            }
+
+
+/* client queries read more button ------------------------------------*/
+            .sender-message-text{
+                display: flex;
+                flex-direction: column;
+                gap:25px;
+            }
+            .checkbox-in{
+                    display:none;
+                }
+                
+                .sent-message-full{
+                    display:none;
+                    transition: 0.5s linear;
+                }
+                label{
+                    display:inline-block;
+                    margin-top:-20px;
+                    align-self: self-start;
+                    font-size:15px;
+                    cursor:pointer;
+                    color:#A53DFF
+                }
+                .checkbox-in:checked ~ .sent-message-full{
+                    display:flex;
+                }
+                .checkbox-in:checked ~ .sent-message{
+                    display:none;
+                }
+                .checkbox-in:checked ~ label{
+                   visibility:hidden;
+                }
+                .checkbox-in:checked ~ label:after{
+                    content:"show less";
+                   visibility:visible;
+                   display:flex;
+                   color:red;
+                   margin-top:-20px;
+                } 
+                
+    
+    </style>
+    </head>
+    <body>
+    <div class="container">
+        <div class="left-side" id="left-side">
+            <div class="user-profile">
+                <div class="profile-image"><div>E</div></div>
+                <div class="user-profile-text">Emmanuel</div>
+            </div>
+            <div class="left-side-menu">
+                <div class="menu">
+                    <div class="menu-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="15" viewBox="0 0 35 31" fill="none">
+                            <path d="M32.0833 0.1875H2.91667C1.30642 0.1875 0 1.65723 0 3.46875V27.5312C0 29.3428 1.30642 30.8125 2.91667 30.8125H32.0833C33.6936 30.8125 35 29.3428 35 27.5312V3.46875C35 1.65723 33.6936 0.1875 32.0833 0.1875ZM10.6944 6.74999C12.8394 6.74999 14.5833 8.71191 14.5833 11.125C14.5833 13.5381 12.8394 15.5 10.6944 15.5C8.54948 15.5 6.80556 13.5381 6.80556 11.125C6.80556 8.71191 8.54948 6.74999 10.6944 6.74999ZM17.5 22.9375C17.5 23.6621 16.8924 24.25 16.1389 24.25H5.25C4.49653 24.25 3.88889 23.6621 3.88889 22.9375V21.625C3.88889 19.4512 5.71788 17.6875 7.97222 17.6875H8.27604C9.02344 18.0361 9.83767 18.2344 10.6944 18.2344C11.5512 18.2344 12.3715 18.0361 13.1128 17.6875H13.4167C15.671 17.6875 17.5 19.4512 17.5 21.625V22.9375ZM31.1111 19.3281C31.1111 19.6289 30.8924 19.875 30.625 19.875H21.875C21.6076 19.875 21.3889 19.6289 21.3889 19.3281V18.2344C21.3889 17.9336 21.6076 17.6875 21.875 17.6875H30.625C30.8924 17.6875 31.1111 17.9336 31.1111 18.2344V19.3281ZM31.1111 14.9531C31.1111 15.2539 30.8924 15.5 30.625 15.5H21.875C21.6076 15.5 21.3889 15.2539 21.3889 14.9531V13.8594C21.3889 13.5586 21.6076 13.3125 21.875 13.3125H30.625C30.8924 13.3125 31.1111 13.5586 31.1111 13.8594V14.9531ZM31.1111 10.5781C31.1111 10.8789 30.8924 11.125 30.625 11.125H21.875C21.6076 11.125 21.3889 10.8789 21.3889 10.5781V9.48437C21.3889 9.18359 21.6076 8.93749 21.875 8.93749H30.625C30.8924 8.93749 31.1111 9.18359 31.1111 9.48437V10.5781Z" fill="black"/>
+                        </svg>
+                    </div>
+                    <div class="menu-text">
+                        <a href="admin-index.html">Dashboard</a>
+                    </div>
+                </div>
+            </div>
+            <div class="left-side-menu">
+                <div class="menu">
+                    <div class="menu-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="15" viewBox="0 0 35 31" fill="none">
+                            <path d="M10.2083 12.7656V18.2344C10.2083 19.1405 9.47379 19.875 8.56769 19.875H1.64062C0.734521 19.875 0 19.1405 0 18.2344V12.7656C0 11.8595 0.734521 11.125 1.64062 11.125H8.56769C9.47379 11.125 10.2083 11.8595 10.2083 12.7656ZM0 23.7031V29.1719C0 30.078 0.734521 30.8125 1.64062 30.8125H8.56769C9.47379 30.8125 10.2083 30.078 10.2083 29.1719V23.7031C10.2083 22.797 9.47379 22.0625 8.56769 22.0625H1.64062C0.734521 22.0625 0 22.797 0 23.7031ZM8.56769 0.1875H1.64062C0.734521 0.1875 0 0.922021 0 1.82812V7.29687C0 8.20297 0.734521 8.93749 1.64062 8.93749H8.56769C9.47379 8.93749 10.2083 8.20297 10.2083 7.29687V1.82812C10.2083 0.922021 9.47379 0.1875 8.56769 0.1875ZM14.0364 30.8125H33.3594C34.2655 30.8125 35 30.078 35 29.1719V23.7031C35 22.797 34.2655 22.0625 33.3594 22.0625H14.0364C13.1303 22.0625 12.3958 22.797 12.3958 23.7031V29.1719C12.3958 30.078 13.1303 30.8125 14.0364 30.8125ZM12.3958 1.82812V7.29687C12.3958 8.20297 13.1303 8.93749 14.0364 8.93749H33.3594C34.2655 8.93749 35 8.20297 35 7.29687V1.82812C35 0.922021 34.2655 0.1875 33.3594 0.1875H14.0364C13.1303 0.1875 12.3958 0.922021 12.3958 1.82812ZM14.0364 19.875H33.3594C34.2655 19.875 35 19.1405 35 18.2344V12.7656C35 11.8595 34.2655 11.125 33.3594 11.125H14.0364C13.1303 11.125 12.3958 11.8595 12.3958 12.7656V18.2344C12.3958 19.1405 13.1303 19.875 14.0364 19.875Z" fill="black"/>
+                        </svg>
+                    </div>
+                    <div class="menu-text">
+                        Articles 
+                    </div>
+                    <span ><i class="fa fa-caret-down" aria-hidden="true" style="font-size:30px;"></i></span>
+                </div>
+                <ul class="dropdown-menu">
+                    <li><a href="new-article.html"><span><i class="fa fa-plus" aria-hidden="true"></i></span> <span>Add Article</span></a></li>
+                    <li><a href="admin-blog-list.html"><span><i class="fa fa-eye" aria-hidden="true"></i></span> <span>view Articles</span></a></li>
+                </ul>
+            </div>
+
+            <div class="left-side-menu">
+                <div class="menu">
+                    <div class="menu-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="15" viewBox="0 0 35 31" fill="none">
+                            <path d="M34.3369 10.3001C34.6035 10.0529 35 10.2842 35 10.675V26.9844C35 29.0978 33.5303 30.8125 31.7188 30.8125H3.28125C1.46973 30.8125 0 29.0978 0 26.9844V10.6829C0 10.2842 0.389648 10.0609 0.663086 10.3081C2.19434 11.6958 4.22461 13.4583 11.1973 19.368C12.6396 20.5962 15.0732 23.1802 17.5 23.1642C19.9404 23.1881 22.4219 20.5483 23.8096 19.368C30.7822 13.4583 32.8057 11.6878 34.3369 10.3001ZM17.5 20.6042C19.0859 20.6361 21.3691 18.2754 22.5176 17.3024C31.5889 9.62223 32.2793 8.9523 34.3711 7.03824C34.7676 6.67936 35 6.12109 35 5.53092V4.01562C35 1.90218 33.5303 0.1875 31.7188 0.1875H3.28125C1.46973 0.1875 0 1.90218 0 4.01562V5.53092C0 6.12109 0.232422 6.67138 0.628906 7.03824C2.7207 8.94433 3.41113 9.62223 12.4824 17.3024C13.6309 18.2754 15.9141 20.6361 17.5 20.6042Z" fill="black"/>
+                        </svg>
+                    </div>
+                    <div class="menu-text">
+                      <a href="admin-queries.html"> Queries</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="left-side-menu">
+                <div class="menu">
+                    <div class="menu-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="15" viewBox="0 0 35 31" fill="none">
+                            <path d="M34.7082 6.71315C34.5551 6.17303 33.7826 5.99 33.3328 6.38357L28.2496 10.8314L23.6094 10.1549L22.8362 6.09467L27.9194 1.64688C28.372 1.25091 28.1539 0.576204 27.5325 0.441024C24.2937 -0.261196 20.7274 0.495455 18.196 2.70978C15.4863 5.08082 14.7405 8.51775 15.8684 11.5144L1.28122 24.2782C-0.427074 25.773 -0.427074 28.1966 1.28122 29.6914C2.98952 31.1862 5.75943 31.1862 7.46773 29.6914L22.0426 16.9384C25.4688 17.9379 29.3892 17.2781 32.1167 14.8916C34.6508 12.6742 35.5141 9.54895 34.7082 6.71315ZM4.37516 28.4198C3.4694 28.4198 2.73454 27.7768 2.73454 26.9842C2.73454 26.1911 3.4694 25.5487 4.37516 25.5487C5.28092 25.5487 6.01578 26.1911 6.01578 26.9842C6.01578 27.7768 5.28092 28.4198 4.37516 28.4198Z" fill="black"/>
+                        </svg>
+                    </div>
+                    <div class="menu-text">
+                        Setting
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-side" id="right-side" >
+            <div class="user-info">
+                <div class="user-info-box1">
+                    <button id="show-menu" onclick="showMenu()"><img src="img/menu.svg" width="18px"></button> 
+                    <button id="close-menu"  onclick="closeMenu()"><i class="fa fa-close" style="font-size:30px;color:#A53DFF"></i></button>
+                    <div class="user">Munezero Emmanuel</div>
+                    <a href="index.html"><button class="logout">logout</button></a>
+                </div>
+            </div>
+            <div class="queries-container">
+               <div class="page-title">
+                <h3>Clients ‘ Queries </h3>
+               </div>
+                <div class="queries-list">
+                    <div class="user-query">
+                        <div class="sender-profile">
+                            <div class="profile-container">
+                                <div class="sender-info">
+                                    <span>Emmanuel Munezero</span>
+                                    <span class="budget-span" style="font-size:14px;margin-top:-15px ;width:100%;">Budget: 100$ </span>
+                                </div>
+                            </div>
+                            <div class="sender-contact">
+                                <div class="sender-contact-address">
+                                    <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>   KG 147 St, Kigali, Rwanda
+                                </div>
+                                <div class="sender-contact-mail">
+                                    <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                      emmanue@gmail.com 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sender-message">
+                            <span class="sender-message-subject">
+                                submission for project proposal
+                            </span>
+                            <span class="sender-message-line"></span>
+                            <span class="sender-message-text">
+                                <input type="checkbox" class="checkbox-in" id="ch0" />
+                                <span class="sent-message"> 
+                                    <!-- this work on less text --> 
+                                </span>
+                                <span class="sent-message-full">
+                                Lorem ipsum dolor sit amet, consectetur 
+                                adipiscing elit. Nulla purus arcu, varius 
+                                eget velit non, laoreet imperdiet orci. 
+                                Mauris ultrices eget lorem ac vestibulum. 
+                                Suspendis imperdiet, Lorem ipsum dolor
+                                </span>
+                                <label for="ch0">Read more</label> 
+                            </span>
+                        </div>
+                    </div>
+                    <div class="user-query">
+                        <div class="sender-profile">
+                            <div class="profile-container">
+                                <div class="sender-info">
+                                    <span>Emmanuel Munezero</span>
+                                    <span class="budget-span" style="font-size:14px;margin-top:-15px">Budget: 100$ </span>
+                                </div>
+                            </div>
+                            <div class="sender-contact">
+                                <div class="sender-contact-address">
+                                    <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>  
+                                     KG 147 St, Kigali, Rwanda
+                                </div>
+                                <div class="sender-contact-mail">
+                                    <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                      emmanue@gmail.com 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sender-message">
+                            <span class="sender-message-subject">
+                                Request for patnering in project implementation
+                            </span>
+                            <span class="sender-message-line"></span>
+                            <span class="sender-message-text">
+                                <input type="checkbox" class="checkbox-in" id="ch1" />
+                                <span class="sent-message"> 
+                                    <!-- this work on less text --> 
+                                </span> 
+                                <span class="sent-message-full">
+                                Lorem ipsum dolor sit amet, consectetur 
+                                adipiscing elit. Nulla purus arcu, varius 
+                                eget velit non, laoreet imperdiet orci. 
+                                Mauris ultrices eget lorem ac vestibulum. 
+                                Suspendis imperdiet, Lorem ipsum dolor
+                                </span>
+                                <label for="ch1">Read more</label> 
+                            </span>
+                        </div>
+                    </div>
+                    <div class="user-query">
+                        <div class="sender-profile">
+                            <div class="profile-container">
+                                <div class="sender-info">
+                                    <span>Emmanuel Munezero</span>
+                                    <span class="budget-span" style="font-size:14px;margin-top:-15px">Budget: 100$ </span>
+                                </div>
+                            </div>
+                            <div class="sender-contact">
+                                <div class="sender-contact-address">
+                                    <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>   KG 147 St, Kigali, Rwanda
+                                </div>
+                                <div class="sender-contact-mail">
+                                    <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                      emmanue@gmail.com 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sender-message">
+                            <span class="sender-message-subject">
+                                Subject for client query
+                            </span>
+                            <span class="sender-message-line"></span>
+                            <span class="sender-message-text">
+                                <input type="checkbox" class="checkbox-in" id="ch2" />
+                                <span class="sent-message"> 
+                                    <!-- this work on less text --> 
+                                </span>
+                                <span class="sent-message-full">
+                                Lorem ipsum dolor sit amet, consectetur 
+                                adipiscing eli
+                                </span>
+                                <label for="ch2">Read more</label> 
+                            </span>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div> 
+    </div>
+      
+    <div class="footer-section">
+        Copyright © 2022 Emmanuel
+    </div>  
+    </body>
+</html>
+
+<script src="js/admin-menu.js"></script>
+<script>
+    const userComment=document.getElementsByClassName("sender-message-text");
+    var length=userComment.length;
+
+for(var i=0;i<length;i++){
+    var innerblock=userComment[i].childNodes[5].innerText;
+     var lessTexT=userComment[i].childNodes[3];
+     var checkbox=userComment[i].childNodes[1];
+     var showButton=userComment[i].childNodes[7];
+     //console.log(userComment[i].childNodes);
+
+     let newStr = innerblock.replace(/\s+/g, ' ');
+    
+
+    if(newStr.length>150){
+        var newText=newStr.trim().substring(0,80)+".....";  
+        lessTexT.innerText=newText;
+    }else{
+       lessTexT.style.display="none" ;
+       showButton.style.display="none";
+       userComment[i].childNodes[5].innerText=newStr
+       userComment[i].childNodes[5].style.display="flex";
+    }
+
+      
+    };
+    
+    
+</script>
