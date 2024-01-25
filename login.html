@@ -171,16 +171,16 @@
         </style>
     </head>
     <body>
-        <div class="nav-bar">
+        <div class="nav-bar" id="nav-bar">
             <div class="logo">
                 <div class="profile-logo"><h1 style="margin:20px;">E</h1></div>
                 <div class="profile-text">Emmanuel</div>
             </div>
             <ul class="link" id="link">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#portfolio">Portfolio</a></li>
                 <li><a href="#blog">Blog</a></li>
                 <li><a href="#contact">contact</a></li>
                 <li><a href="login.html"><button style="color:#FFFFFF">Login</button></a></li>
@@ -201,7 +201,7 @@
                         <input id="username" type="text" value=""/>
                         <label>Password:</label>
                         <input id="password" type="password" value=""/>
-                       <button type="submit" onclick="login()">Login<img src="img/Paper Plane.png" style="width:20px;height:20px;"/> </button>
+                       <button type="submit" onclick="loginUser()">Login<img src="img/Paper Plane.png" style="width:20px;height:20px;"/> </button>
                     </form>
                 </div>
             </div>
@@ -219,4 +219,10 @@
 
     <script src="js/nav.js"></script>
 
-  
+  <script>
+    function loginUser(){
+        window.open("admin-index.html");
+     
+    }
+    
+  </script>

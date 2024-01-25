@@ -125,6 +125,8 @@ a:focus{
     position:fixed;
     top:-10;
     padding-top:1%;
+    left:0;
+    right:100px;
     font-family: "Work sans"; font-size: medium;
     z-index:2;
     
@@ -452,7 +454,7 @@ section{
     }
     .profile-image{
         align-self: center;
-       width:90%;
+       width:80%;
 
     }
 }
@@ -544,6 +546,8 @@ section{
 .about-text-description{
     width:100%;
     color: #556070;
+    /*text-align: center;*/
+    text-align: justify;
     font-family: Work Sans;
     font-size: 18px;
     font-style: normal;
@@ -1115,6 +1119,7 @@ section{
         } 
         .slide-wraper .image-list{
             display: flex;
+           
             gap:30px;
             font-size:0;
             overflow: auto;
@@ -1129,7 +1134,7 @@ section{
 
         .image-item{
             width:320px;
-            height:440px;
+            height:400px;
             object-fit: cover;
             gap: 35px;
             border-radius: 8px;
@@ -1143,6 +1148,7 @@ section{
         .slide-wraper{
             position: relative;
         }
+
         .slide-wraper .slider-button{
             position: absolute;
             top:50%;
@@ -1158,7 +1164,7 @@ section{
             transform: translateY(-50%);
             
         }
-
+       
         .slide-wraper .slider-button:hover{
             background-color: #444;
         }
@@ -1230,6 +1236,7 @@ section{
             font-style: normal;
             font-weight: 500;
             line-height: 24px; 
+            padding-bottom:15px;
             color: #333;
            
         }
@@ -1255,7 +1262,16 @@ section{
 
 
         }
+
+        @media(max-width:500px){
+            
+
+        }
          
+        .image-list.image-item{
+            width:10px;
+           background-color: red;
+        }
 
     /* this is the starting of work section and talk about more on what I do ----------*/
 
