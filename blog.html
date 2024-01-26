@@ -2,7 +2,7 @@
     <head>
         <meta charset='utf-8'>
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-        <title> My Brand page-Login page</title>
+        <title> My Brand page-blog page</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/index.css"/>
@@ -119,6 +119,9 @@
                 text-wrap: wrap;
                 word-wrap: break-word; 
             }
+            .comment-count span i:hover{
+                    cursor: pointer;
+                }
             .blog-text{
                 width:100%;
                 margin-top:-50px;
@@ -361,6 +364,7 @@
                     width:45%;
                     align-self: center;
                 }
+               
                 .comment-date{
                     width:40%;
                 }
@@ -514,7 +518,7 @@
                 <div class="blog-count">
                     <div class="comment-date">Posted on:2022-01-11</div>
                     <div class="comment-count">
-                        <span>5<i class="fa fa-thumbs-up" style="font-size:20px; color:#A53DFF"></i></span>
+                        <span>5 <i class="fa fa-thumbs-up" style="font-size:20px; color:#A53DFF"></i></span>
                         <span>10<i class="fa fa-comments" style="font-size:20px; color:#A53DFF"></i></span></div>
                 </div>
             </div>
@@ -541,7 +545,7 @@
                 </p>
             </div>
             <div class="blog-comment-section">
-                <div class="comment-form-title">Add your Comment here</div>
+                <div class="comment-form-title" id="comment-form">Add your Comment here</div>
                 <div class="comment-form">
                     <div class="comment-input-section-names">
                         <div class="comment-firstname">
