@@ -50,21 +50,21 @@
     font-weight: 500;
     line-height: 24px;
     text-wrap: wrap;
-  
+    text-align: center;
+
 }
 .logout{
     display: flex;
-    padding: 12px 10px;
+    padding: 10px 0px;
     justify-content: center;
     align-items: center;
-    gap: 12px;
-    width:90%;
+    width:100px;
     border:none;
     border-radius: 10px;
     background: #A53DFF;
     color: #FFF;
     font-family: "Work Sans";
-    font-size: 24px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 600;
     line-height: 24px;
