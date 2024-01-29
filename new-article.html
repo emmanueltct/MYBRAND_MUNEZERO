@@ -6,7 +6,7 @@
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="richtexteditor/rte_theme_default.css" />
-		<script type="text/javascript" src="richtexteditor/rte.js"></script>
+		<script type="text/javascript" src="/richtexteditor/rte.js"></script>
 		<script type="text/javascript" src='richtexteditor/plugins/all_plugins.js'></script>
 
         <link rel="stylesheet" href="css/admin-panel.css"/>
@@ -72,7 +72,26 @@
             border-radius: 10px;
             border: 1px solid #000; 
         }
-       
+        .submit-button{
+                display: flex;
+                width: 200px;
+                height:45px;
+                padding: 12px 24px;
+                justify-content: center;
+                align-items: center;
+                gap: 12px;
+                border-radius: 10px;
+                font-size:18px;
+                border:none;
+                color:#fff;
+                background-color: #A53DFF;
+        }
+        
+        small{
+            color:rgb(240, 37, 148) ;
+            font-size: medium;
+           
+        }
     </style>
     </head>
     <body>
@@ -153,21 +172,29 @@
                 <h3>post new article / blog here</h3>
                </div>
                <div class="form-container">
-                <div class="article-form">
+                <form class="article-form" id="article-form">
                     <div class="input-section">
                         <label>Blog Title:</label>
-                        <input type="" value=""/>
+                        <input id="article-title" type="" value=""/>
+                        <small id="article-error"></small>
                     </div>
                     <div class="input-section">
                         <label>Blog Thumbnail:</label>
-                        <input type="file" value=""/>
+                        <input id="thumbnail" type="file" value=""/>
+                        <small id="thumbnail-error"></small>
                     </div>
                     <div class="input-section">
                         <label>Elaborate more on your topic:</label>
-                        <textarea id="inp_editor1">
+                        <textarea id="inp_editor1" >
                         </textarea>
                     </div>
-                </div>
+                    <div class="input-section">
+                        <button class="submit-button">
+                            <span>Post Article</span>
+                            <img src="img/Paper Plane.png" style="width:24px;height:24px;"/>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
         </div>
@@ -185,6 +212,54 @@
     
     var editor1 = new RichTextEditor("#inp_editor1");
     /// var editor1 = new RichTextEditor("#div_editor1", { editorResizeMode:"both"  });
+
+    const form=document.getElementById('article-form')
+    const title=document.getElementById("article-title");
+    const thumbnail=document.getElementById('thumbnail');
+    
+    form.addEventListener('submit',(e)=>{
+        e.preventDefault();
+        handleInputs();
+    })
+
+    function handleInputs(){
+        const titleValue=title.value.trim();
+        const selectedFile=thumbnail.files[0];
+        const  allowedTypes = ['image/jpeg', 'image/png', 'img/jpg','image/webp'];
+
+        // article title baidation -----------------------------------------
+        
+        if(titleValue ===''){
+            title.style.border='1px solid red';
+            document.getElementById("article-error").innerText='Article title is required';
+
+        }else if(titleValue.length<10){
+            document.getElementById("article-error").innerText='Article title should be atleast more than 10 characters'; 
+        }else{
+            title.style.border='1px solid #A53DFF';
+            document.getElementById("article-error").innerText='';  
+        }
+
+        // thumbnail validation ----------------------------------------
+
+        if(thumbnail.files.length<0){
+            thumbnail.style.border='1px solid red';
+            document.getElementById('thumbnail-error').innerText='Article thumbnail is required please select image';
+        }else if (!allowedTypes.includes(selectedFile.type)) {
+            thumbnail.style.border='1px solid red';
+            thumbnail.value = '';
+            document.getElementById('thumbnail-error').innerText='Invalid file type. Please upload a JPEG, JPG, PNG, or WEBP';
+        
+         }else if(Math.round(selectedFile.size/1024)>2048){
+            thumbnail.style.border='1px solid red';
+            thumbnail.value = '';
+            document.getElementById('thumbnail-error').innerText='File size should not be greater than 2MB';
+
+         }else{
+            thumbnail.style.border='1px solid #A53DFF'; 
+         }
+
+    }
 </script>
 
 

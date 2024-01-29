@@ -7,7 +7,42 @@
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/index.css"/>
-        
+        <style>
+            .input-section{
+                position:relative;
+            }
+            .input-section i{
+                position:absolute;
+                top:30px;
+                right:10px;
+            }
+            .input-section.success input{
+                border-bottom: 1px solid;
+                border-color: #A53DFF;
+            }
+            .input-section.error input{
+                border-bottom: 1px solid;
+                border-color: rgb(240, 37, 148);
+            }
+            i{
+                visibility: hidden;
+            }
+            .input-section.success i.fa-check-circle{
+                color: #A53DFF;
+                visibility: visible;
+            }
+            .input-section.error i.fa-exclamation-circle{
+                visibility: visible;
+                color:rgb(240, 37, 148) ;
+            }
+            .input-section  small{
+                visibility: hidden;
+            }
+            .input-section.error small{
+                visibility: visible;
+                color:rgb(240, 37, 148) ; 
+            }
+        </style>
     </head>
     <body>
             
@@ -604,38 +639,56 @@
                         but the majority have suffered alte.
                     </div>
                     <div class="contact-form">
-                        <div class="form-fieldset">
+                        <form  id="contact-form" class="form-fieldset">
                             <div class="input-section">
                                 <label style="color: #A53DFF;">Name *</label>
-                                <input type="text" value="" style="border-bottom:1px solid #A53DFF;"/>
+                                <input id="names" type="text" value="" />
+                                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                <small>Erron message</small>
                             </div>
-                            <div class="input-section">
+                            <div  class="input-section">
                                 <label>Email *</label>
-                                <input type="text" value=""/>
+                                <input id="email" type="text" value=""/>
+                                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                <small>Erron message</small>
                             </div>
                             <div class="input-section">
                                 <label>Location</label>
-                                <input type="text" value=""/>
+                                <input id="location" type="text" value=""/>
+                                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                <small>Erron message</small>
                             </div>
                             <div class="budget-subject">
                                 <div class="input-section">
                                     <label>Budget *</label>
-                                    <input type="text" value="" style="width:100%"/>
+                                    <input id="budget" type="text" value="" style="width:100%"/>
+                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                    <small>Erron message</small>
                                 </div>
                                 <div class="input-section">
                                     <label>Subject *</label>
-                                    <input type="text" value="" style="width:100%"/>
+                                    <input id="subject" type="text" value="" style="width:100%"/>
+                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                    <small>Erron message</small>
                                 </div>
                             </div>
                             <div class="input-section">
                                 <label>Message</label>
-                                <input type="text" value=""/>
+                                <input id="message" type="text" value=""/>
+                                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                <small>Erron message</small>
                             </div>
                             <button class="contact-submit-button">
                                 <span>Submit</span>
                                 <img src="img/Paper Plane.png" style="width:24px;height:24px;"/>
                             </button>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </section>
@@ -665,3 +718,135 @@
 
 <script src="js/nav.js"></script>
 <script src="js/slide.js"></script>
+
+<script>
+    const form=document.getElementById("contact-form");
+    const names=document.getElementById("names");
+    const email=document.getElementById("email");
+    const location2=document.getElementById("location");
+    const budget=document.getElementById("budget");
+    const subject=document.getElementById("subject");
+    const message=document.getElementById("message");
+    const isError=true;
+
+    form.addEventListener('submit',(e)=>{
+        e.preventDefault();
+       
+    })
+
+    function validateInputs(){
+        const nameValue=names.value.trim();
+        const emailValue=email.value.trim();
+        const locationValue=location2.value.trim();
+        const budgetValue=budget.value.trim();
+        const subjectValue=subject.value.trim();
+        const messageValue=message.value.trim();
+
+        // names field validation 
+
+        if(nameValue ===''){
+            setErrorFor(names,'Name field is required!'); 
+           
+        }else if(nameValue.length<3){
+            setErrorFor(names,'Provided name is too short! please add the second name'); 
+      
+        }
+        else if(nameValue.length>60){
+            setErrorFor(names,'Provided name is too long! not greater than 60 characters'); 
+        }
+        else{
+            setSuccessFor(names);
+        }
+
+        // email field validation 
+
+        if(emailValue === ''){
+            setErrorFor(email,'Email field is required!');
+           
+        }else if(!isEmail(emailValue)){
+            setErrorFor(email,'invalid email format');
+            
+        }else{
+            setSuccessFor(email);
+        }
+
+        // location input validation 
+
+        if(locationValue ===''){
+
+            setErrorFor(location2,'Location field is required!'); 
+         
+            
+        }else if(locationValue.length<5){
+
+            setErrorFor(location2,'too short text of address location'); 
+           
+
+        }
+        else{
+            setSuccessFor(location2);
+        }
+
+        // budget input field validation 
+
+        if(budgetValue === ''){
+            setErrorFor(budget,'Budget field is required!');
+           
+        }else if(!isCurrency(budgetValue)){
+            setErrorFor(budget,'invalid currency!!  accepted format be like 100 USD | 100$ |1000 RWF '); 
+           
+        }
+        else{
+            setSuccessFor(budget);
+        }
+
+        // subject input field validation 
+
+        if(subjectValue === ''){
+            setErrorFor(subject,'Subject field is required!');
+
+    
+        }else if(subjectValue.length<15){
+            setErrorFor(subject,'too short subject input, atleast 15 character length');
+         
+        }
+        else{
+            setSuccessFor(subject);
+        }
+
+        // message input validation 
+
+        if(messageValue === ''){
+            setErrorFor(message,'Subject field is required!');
+          
+    
+        }else if(messageValue.length<30){
+            setErrorFor(message,'too short message, atleast 30 character length');
+            
+        }else{
+            setSuccessFor(message);
+        }
+      
+    }
+
+    function setErrorFor(input,message){
+        const inputSection=input.parentElement;
+        const small=inputSection.querySelector('small');
+        small.innerText=message;
+
+        inputSection.className='input-section error';
+    }
+
+    function setSuccessFor(input){
+        const inputSection=input.parentElement;
+        inputSection.className='input-section success';
+    }
+    
+    function isEmail(email){
+        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)
+    }
+    function isCurrency(budget){
+        return /^[0-9]+(\s?)+(rwf|RWF|USD|\$)$/.test(budget);
+    }
+   
+</script>

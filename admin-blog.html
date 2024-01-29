@@ -25,13 +25,16 @@
             color:  #132238;
             text-align: center;
             font-family: "Work Sans";
-            font-size: 40px;
+            font-size: 32px;
             font-style: normal;
             font-weight: 500;
-            line-height: 44px;
+            line-height: 40px;
             text-wrap: wrap;
-            word-wrap: break-word;
+            margin-top:50px;
             
+        }
+        .blog-title:hover{
+            text-decoration: underline;
         }
         .blog-thumbnail{
             display:flex;
@@ -42,10 +45,16 @@
           
         }
         .image-container{
-            width:100%;
-            height:300px;
-            overflow:hidden;
-        }
+                display:flex;
+                width:100%;
+                height:300px;
+                overflow:hidden;
+            }
+            .blog-image{
+                object-fit: cover;
+                width: 100%;
+            }
+
         .blog-count{
             display:flex;
             align-items:center;
@@ -218,11 +227,11 @@
             </div>
             <div class="single-blog-section">
                 <div class="blog-title">
-                    This a title for my first article, thank you for reading  
+                    <h4>This a title for my first article, thank you for reading  </h4>
                 </div>
                 <div class="blog-thumbnail">
                     <div class="image-container">
-                        <img src="img/blog/blog1.png" style="width:100%"/> 
+                        <img src="img/blog/blog1.png"  class="blog-image"/> 
                     </div>
                     <div class="blog-count">
                         <div class="comment-action-button">
