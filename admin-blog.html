@@ -70,7 +70,7 @@
             align-items:center;
             justify-content: space-between;
             gap:10px;
-            width:20%;
+            width:30%;
             padding:1% 3%;
             color: #87909D;
             font-family: Work Sans;
@@ -227,18 +227,18 @@
             </div>
             <div class="single-blog-section">
                 <div class="blog-title">
-                    <h4>This a title for my first article, thank you for reading  </h4>
+                    <h4 id="blog-title">This a title for my first article, thank you for reading  </h4>
                 </div>
                 <div class="blog-thumbnail">
                     <div class="image-container">
-                        <img src="img/blog/blog1.png"  class="blog-image"/> 
+                        <img src="img/blog/blog1.png" alt="Blog Image Thumbnail"  class="blog-image"/> 
                     </div>
                     <div class="blog-count">
-                        <div class="comment-action-button">
-                            <button style="background-color:#A53DFF;"><span><i class="fa fa-pencil" ></i></span> Edit</button> 
-                             <button style="background-color:#8C1919;"><span><i class="fa fa-trash" ></i></span> Delete</button>
+                        <div class="comment-action-button" >
+                            <button style="background-color:#A53DFF;" onclick="updateBlog()" ><span><i class="fa fa-pencil" ></i></span> Edit</button> 
+                             <button style="background-color:#8C1919;" onclick="deleteThisBlog()"><span><i class="fa fa-trash" ></i></span> Delete</button>
                          </div>
-                         <div class="comment-date">Posted on:2022-01-11</div>
+                         <div class="comment-date">Posted on:<span id="postedOn">2022-01-11</span></div>
                         <div class="comment-count">
                             <span>5<i class="fa fa-thumbs-up" style="font-size:20px; color:#A53DFF"></i></span>
                              <span>10<i class="fa fa-comments" style="font-size:20px; color:#A53DFF"></i></span>
@@ -247,7 +247,7 @@
                     </div>
 
                 </div>
-                <div class="blog-text">
+                <div class="blog-text" id="blog-text">
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla purus arcu, varius eget velit non, laoreet 
                         imperdiet orci. Mauris ultrices eget lorem ac vestibulum. Suspendis imperdiet, Lorem ipsum dolor sit amet, 
@@ -285,14 +285,43 @@
 <script src="js/admin-menu.js"></script>
 
 <script>
-   /*
-        const menu= document.getElementById('left-side');
+ 
+    const searchParams = new URLSearchParams(window.location.search);
+    const blogText=searchParams.get('id');
+    var data=[];
 
-    window.addEventListener('scroll', function() {  
-    if (window.scrollY > 0) {
-        menu.style.position="fixed";
-       
-    } 
-    });
-    */
+    if(localStorage.getItem("formValue")){
+         data=JSON.parse(localStorage.getItem("formValue"));
+        let singleBlog=data[blogText];
+        console.log(singleBlog)
+        if(singleBlog){
+            document.getElementById("blog-title").innerText=singleBlog.title;
+            document.getElementById("blog-text").innerHTML=singleBlog.desc;
+            document.getElementById("postedOn").innerText=singleBlog.date;
+            document.querySelector(".blog-image").setAttribute("src",singleBlog.img)
+            
+        }
+    }
+        
+    function updateBlog(){
+        window.location.href=`new-article.html?updateBlog=${blogText}`;
+        //console.log('this update');
+    }
+
+    function deleteThisBlog(){
+        //console.log('tettttttte')
+        data=JSON.parse(localStorage.getItem("formValue"));
+        let singleBlog=data[blogText];
+        if(singleBlog){
+            data.splice(blogText,1);
+            localStorage.setItem("formValue", JSON.stringify(data));
+            window.location.href='admin-blog-list.html';
+        }
+    }
+    
+  
+
+
+
+
 </script>

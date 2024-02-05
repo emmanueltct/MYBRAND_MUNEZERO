@@ -70,3 +70,17 @@ window.addEventListener('scroll', function() {
         document.getElementById("close-menu").style.backgroundColor="#FFF";  
     } 
 })
+
+const links=document.querySelectorAll(".link li a");
+links.forEach(link=>{
+    link.addEventListener('click',()=>{
+        removeActive();
+        link.setAttribute('class','active');
+    })
+})
+
+function removeActive(){
+    links.forEach(link=>{
+        link.removeAttribute('class')
+    }) 
+}

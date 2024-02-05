@@ -24,7 +24,7 @@
                 border-bottom: 1px solid;
                 border-color: rgb(240, 37, 148);
             }
-            i{
+            .input-section i{
                 visibility: hidden;
             }
             .input-section.success i.fa-check-circle{
@@ -42,6 +42,26 @@
                 visibility: visible;
                 color:rgb(240, 37, 148) ; 
             }
+
+            .dots-dots{
+                background-color:#C3C7CE ;
+                border-radius: 50px;
+                height:10px;
+                width:10px;
+                cursor: pointer;
+            }
+            #slide-dots .active{
+                background-color:rgb(240, 37, 148);
+                pointer-events: none;
+            }
+            
+            @media(max-width:786px){
+                .dots-dots{
+                    display: none;
+                }
+            }
+
+          
         </style>
     </head>
     <body>
@@ -58,7 +78,7 @@
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#blog">Blog</a></li>
                     <li><a href="#contact">contact</a></li>
-                    <li><a href="login.html"><button style="color:#FFFFFF">Login</button></a></li>
+                    <li><a class="active" href="login.html">Login</a></li>
                 </ul>
             </div>
 
@@ -335,6 +355,10 @@
                             <div class="blog-text-description">
                                 There are many variations of passages of Lorem Ipsum available,
                                 but the majority have suffered alteration.
+
+                            </div>
+                            <div id="blog-desc" style="display:none;">
+
                             </div>
                         </div>
 
@@ -346,7 +370,7 @@
                                         <img src="img/blog/blog1.png"/>
                                         <div class="blog-card-text">
                                             <div class="fun-fact">
-                                                <span>Published on: 22 Oct, 2020 </span>
+                                                <span>Published on: 22 Oct, 2020 [1]</span>
                                             </div>
                                             <div class="main-title"><a href="blog.html">the first blog title should be here</a></div>
                                             <div class="single-blog-title">
@@ -362,7 +386,7 @@
                                         <img src="img/blog/blog1.png"/>
                                         <div class="blog-card-text">
                                             <div class="fun-fact">
-                                                <span>Published on: 22 Oct, 2020 </span>
+                                                <span>Published on: 22 Oct, 2020 [2]</span>
                                             </div>
                                             <div class="main-title"><a href="blog.html">the first blog title should be here</a></div>
                                             <div class="single-blog-title">
@@ -378,7 +402,7 @@
                                         <img src="img/blog/blog1.png"/>
                                         <div class="blog-card-text">
                                             <div class="fun-fact">
-                                                <span>Published on: 22 Oct, 2020 </span>
+                                                <span>Published on: 22 Oct, 2020 [3]</span>
                                             </div>
                                             <div class="main-title"><a href="blog.html">the first blog title should be here</a></div>
                                             <div class="single-blog-title">
@@ -395,7 +419,7 @@
                                         <img src="img/blog/blog4.png"/>
                                         <div class="blog-card-text">
                                             <div class="fun-fact">
-                                                <span>Published on: 22 Oct, 2020 </span>
+                                                <span>Published on: 22 Oct, 2020 [4]</span>
                                             </div>
                                             <div class="main-title"><a href="blog.html" >the  third blog title should be here</a></div>
                                             <div class="single-blog-title">
@@ -411,7 +435,7 @@
                                         <img src="img/blog/blog2.png" alt=""/>
                                         <div class="blog-card-text">
                                             <div class="fun-fact">
-                                                <span>Published on: 22 Oct, 2020 </span>
+                                                <span>Published on: 22 Oct, 2020 [5]</span>
                                             </div>
                                             <div class="main-title"><a href="blog.html" >the  fourth blog title should be here</a></div>
                                             <div class="single-blog-title">
@@ -427,7 +451,7 @@
                                         <img src="img/blog/blog3.png" alt=""/>
                                         <div class="blog-card-text">
                                             <div class="fun-fact">
-                                                <span>Published on: 22 Oct, 2020 </span>
+                                                <span>Published on: 22 Oct, 2020 [6]</span>
                                             </div>
                                             <div class="main-title"><a href="blog.html" >the fifth blog title should be here</a></div>
                                             <div class="single-blog-title">
@@ -443,7 +467,39 @@
                                         <img src="img/blog/blog4.png" alt=""/>
                                         <div class="blog-card-text">
                                             <div class="fun-fact">
-                                                <span>Published on: 22 Oct, 2020 </span>
+                                                <span>Published on: 22 Oct, 2020[7] </span>
+                                            </div>
+                                            <div class="main-title"><a href="blog.html" >the fifth blog title should be here</a></div>
+                                            <div class="single-blog-title">
+                                                Lorem ipsum dolor sit consea. Nulla purus arcu  property specifies 
+                                            </div>
+                                            <div class="fun-fact" >
+                                                <span>13 <i class="fa fa-thumbs-up" style="font-size:15px; color:#A53DFF"></i> </span>
+                                                <span>2 <i class="fa fa-comments" style="font-size:15px; color:#A53DFF"></i></span>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="image-item">
+                                        <img src="img/blog/blog4.png" alt=""/>
+                                        <div class="blog-card-text">
+                                            <div class="fun-fact">
+                                                <span>Published on: 22 Oct, 2020[8] </span>
+                                            </div>
+                                            <div class="main-title"><a href="blog.html" >the fifth blog title should be here</a></div>
+                                            <div class="single-blog-title">
+                                                Lorem ipsum dolor sit consea. Nulla purus arcu  property specifies 
+                                            </div>
+                                            <div class="fun-fact" >
+                                                <span>13 <i class="fa fa-thumbs-up" style="font-size:15px; color:#A53DFF"></i> </span>
+                                                <span>2 <i class="fa fa-comments" style="font-size:15px; color:#A53DFF"></i></span>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="image-item">
+                                        <img src="img/blog/blog4.png" alt=""/>
+                                        <div class="blog-card-text">
+                                            <div class="fun-fact">
+                                                <span>Published on: 22 Oct, 2020[9] </span>
                                             </div>
                                             <div class="main-title"><a href="blog.html" >the fifth blog title should be here</a></div>
                                             <div class="single-blog-title">
@@ -468,19 +524,9 @@
                         </div>
 
                 
-                    <div style="display: flex;align-items: flex-start;gap:2px;">
-                        <span style="width: 30px;height: 8px;border-radius: 100px;background:#210C33;"></span>
-                        <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
-                                <circle cx="4" cy="4" r="4" fill="#C3C7CE"/>
-                                </svg>
-                        </span>
-                        <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
-                                <circle cx="4" cy="4" r="4" fill="#C3C7CE"/>
-                                </svg>
-                        </span>
-                    </div>
+                        <div style="display: flex;align-items: flex-start;gap:2px;" id="slide-dots">
+                            <span style="width: 30px;height: 8px;border-radius: 100px;background:#210C33;"></span>
+                        </div>
                  </div> 
             </section>
             <!--this the starting point of work section and give more on what we do -------------------------->
@@ -571,6 +617,7 @@
                             Managing Director, ABC company 
                         </p>
                     </div>
+                    <!--
                     <div style="display: flex;align-items: flex-start;gap:2px;">
                         <span style="width: 30px;height: 8px;border-radius: 100px;background:#210C33;"></span>
                         <span>
@@ -584,6 +631,7 @@
                               </svg>
                         </span>
                     </div>
+                    -->
                 </div>
             </section>
               <!--this the strting point of contact section and help us to interact with client -------------------------->
@@ -679,12 +727,12 @@
                             </div>
                             <div class="input-section">
                                 <label>Message</label>
-                                <input id="message" type="text" value=""/>
+                                <textarea id="message" cols="6" rows="5" onKeyUp='validateTextArea()'></textarea>
                                 <i class="fa fa-check-circle" aria-hidden="true"></i>
                                 <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                                 <small>Erron message</small>
                             </div>
-                            <button class="contact-submit-button">
+                            <button class="contact-submit-button" id="submit-button" >
                                 <span>Submit</span>
                                 <img src="img/Paper Plane.png" style="width:24px;height:24px;"/>
                             </button>
@@ -717,54 +765,79 @@
 
 
 <script src="js/nav.js"></script>
-<script src="js/slide.js"></script>
+<script src="js/slide2.js"></script>
 
 <script>
     const form=document.getElementById("contact-form");
+    const input=document.querySelectorAll(".input-section input");
     const names=document.getElementById("names");
     const email=document.getElementById("email");
     const location2=document.getElementById("location");
     const budget=document.getElementById("budget");
     const subject=document.getElementById("subject");
     const message=document.getElementById("message");
-    const isError=true;
+    const sendButton=document.getElementById("submit-button");
+   
+    sendButton.style.pointerEvents = "none";
+    
 
     form.addEventListener('submit',(e)=>{
         e.preventDefault();
-       
+        if(validateInputs() && validateTextArea() ){
+            console.log('test of user');
+        }
     })
 
+   
+    input.forEach(inputElement=>{
+            inputElement.addEventListener('keyup',()=>{                //console.log(inputElement)
+                
+                if(validateInputs()){
+                   validateTextArea()  
+                }
+            })
+        })
+
+       
     function validateInputs(){
         const nameValue=names.value.trim();
         const emailValue=email.value.trim();
         const locationValue=location2.value.trim();
         const budgetValue=budget.value.trim();
         const subjectValue=subject.value.trim();
-        const messageValue=message.value.trim();
+    
 
         // names field validation 
 
         if(nameValue ===''){
-            setErrorFor(names,'Name field is required!'); 
+            setErrorFor(names,'Name field is required!');
+            return false; 
            
         }else if(nameValue.length<3){
-            setErrorFor(names,'Provided name is too short! please add the second name'); 
-      
+            setErrorFor(names,'Provided name is too short! please write both names'); 
+            return false;  
         }
         else if(nameValue.length>60){
             setErrorFor(names,'Provided name is too long! not greater than 60 characters'); 
+            return false; 
+        }
+        else if(!isValidName(nameValue)){
+            setErrorFor(names,'do not include any number or symbols'); 
+            return false
         }
         else{
             setSuccessFor(names);
+            
         }
 
         // email field validation 
 
         if(emailValue === ''){
             setErrorFor(email,'Email field is required!');
-           
+           return false;
         }else if(!isEmail(emailValue)){
             setErrorFor(email,'invalid email format');
+            return false; 
             
         }else{
             setSuccessFor(email);
@@ -775,13 +848,12 @@
         if(locationValue ===''){
 
             setErrorFor(location2,'Location field is required!'); 
-         
+            return false;
             
         }else if(locationValue.length<5){
 
             setErrorFor(location2,'too short text of address location'); 
-           
-
+            return false;
         }
         else{
             setSuccessFor(location2);
@@ -791,10 +863,10 @@
 
         if(budgetValue === ''){
             setErrorFor(budget,'Budget field is required!');
-           
+            return false;
         }else if(!isCurrency(budgetValue)){
             setErrorFor(budget,'invalid currency!!  accepted format be like 100 USD | 100$ |1000 RWF '); 
-           
+            return false;
         }
         else{
             setSuccessFor(budget);
@@ -804,11 +876,11 @@
 
         if(subjectValue === ''){
             setErrorFor(subject,'Subject field is required!');
-
+            return false;
     
         }else if(subjectValue.length<15){
             setErrorFor(subject,'too short subject input, atleast 15 character length');
-         
+            return false;
         }
         else{
             setSuccessFor(subject);
@@ -816,16 +888,7 @@
 
         // message input validation 
 
-        if(messageValue === ''){
-            setErrorFor(message,'Subject field is required!');
-          
-    
-        }else if(messageValue.length<30){
-            setErrorFor(message,'too short message, atleast 30 character length');
-            
-        }else{
-            setSuccessFor(message);
-        }
+        return true;
       
     }
 
@@ -842,11 +905,79 @@
         inputSection.className='input-section success';
     }
     
+
+    function isValidName(names){
+        return /^([a-zA-Z]{3,})+((\s)[a-zA-Z]{2,})?$/.test(names)
+    }
     function isEmail(email){
         return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)
     }
     function isCurrency(budget){
         return /^[0-9]+(\s?)+(rwf|RWF|USD|\$)$/.test(budget);
     }
-   
+    
+
+    function validateTextArea(){
+        const messageValue=message.value.trim();
+        if(messageValue === ''){
+            setErrorFor(message,'Subject field is required!');
+            return false;
+          
+        }else if(messageValue.length<30){
+            setErrorFor(message,'too short message, atleast 30 character length');
+            return false;
+        }else{
+
+            setSuccessFor(message);
+            sendButton.style.pointerEvents = "auto";
+            return true;
+        }
+       
+    }
+          
+          
+// setting blog value from local storage
+
+const cardContainer=document.querySelector('.image-list');
+const eachCard=document.querySelectorAll('.image-item')
+
+
+
+
+
+if(localStorage.getItem("formValue")){
+            eachCard.forEach(card=>{
+                 card.remove();
+            })
+
+         data=JSON.parse(localStorage.getItem("formValue"));
+
+         for(i=0;i<data.length;i++){
+            let x = Math.floor((Math.random() * 100) + 1);
+            document.getElementById('blog-desc').innerHTML=data[i].desc;
+             const fEl= document.getElementById('blog-desc').firstChild.innerText;
+            let element=`
+                        <div class="image-item">
+                                <img src="${data[i].img}" alt="Article image of ${data[i].title} "/>
+                                <div class="blog-card-text">
+                                    <div class="fun-fact">
+                                        <span>Published on:${data[i].date} </span>
+                                    </div>
+                                    <div class="main-title"><a href="blog.html?id=${i}"> ${data[i].title}</a></div>
+                                    <div class="single-blog-title">
+                                       ${fEl?fEl.substring(0, 80)+'...':''}
+                                    </div>
+                                    <div class="fun-fact">
+                                        <span>${x+10} <i class="fa fa-thumbs-up" style="font-size:15px; color:#A53DFF"></i> </span>
+                                        <span>${x} <i class="fa fa-comments" style="font-size:15px; color:#A53DFF"></i></span>
+                                    </div>
+                                </div> 
+                            </div>
+                            `
+                            cardContainer.insertAdjacentHTML('beforeend',element)
+         }
+        
+    }
+
+
 </script>

@@ -1,3 +1,4 @@
+
 const initSlider=()=>{
     const imageList=document.querySelector(".slide-wraper .image-list");
     const sliderButtons=document.querySelectorAll(".slide-wraper .slider-button");
@@ -14,6 +15,7 @@ const initSlider=()=>{
             const scrollAmount=imageList.clientWidth * direction;
             imageList.scrollBy({left: scrollAmount,behavior:"smooth"} );
         })
+       
     })
 
     const handleSlideButtons=()=>{
@@ -36,4 +38,12 @@ const initSlider=()=>{
 
 }
 
+window.onresize = function() {
+         
+    // Setting the current height & width
+    // to the elements
+    let sWidth=window.innerWidth;
+    console.log(sWidth)
+};
 window.addEventListener("load",initSlider);
+
