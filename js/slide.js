@@ -43,7 +43,7 @@ window.onresize = function() {
     // Setting the current height & width
     // to the elements
     let sWidth=window.innerWidth;
-    console.log(sWidth)
+   // console.log(sWidth)
 };
 window.addEventListener("load",initSlider);
 

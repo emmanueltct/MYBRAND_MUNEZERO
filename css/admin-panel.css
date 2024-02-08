@@ -1,6 +1,7 @@
 .container{
     display:flex;
     width:100%;
+  
 
 }
 .right-side{
@@ -293,8 +294,8 @@ ul li:hover{
     display: flex;
     width:100%;
     padding:30 0;
-/*
-    position:fixed;
+
+   /* position:fixed;
     bottom:0;
 */
 }
@@ -312,7 +313,6 @@ ul li:hover{
    }
    
   
-
 @media(max-width:1050px){
     .user-info-box1{width:60%;}
     .card-section{
@@ -373,3 +373,92 @@ ul li:hover{
 }
 
 
+/* showing message for some actions on the page */
+
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 250px;
+    font-size: 17px;
+  }
+  
+  #snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 1s, fadeout 1s 3.5s;
+    animation: fadein 1s, fadeout 1s 3.5s;
+  }
+  
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 250px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 250px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 250px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+
+  /* css spinner loading start here ------------------------------- */
+
+
+.loader {
+    width: 30px;
+    aspect-ratio: 1;
+    --c: no-repeat linear-gradient(#000 0 0);
+    background: 
+        var(--c) 0%   50%,
+        var(--c) 50%  50%,
+        var(--c) 100% 50%;
+    background-size: 20% 100%;
+    animation: l1 1s infinite linear;
+    }
+    @keyframes l1 {
+    0%  {background-size: 20% 100%,20% 100%,20% 100%}
+    33% {background-size: 20% 10% ,20% 100%,20% 100%}
+    50% {background-size: 20% 100%,20% 10% ,20% 100%}
+    66% {background-size: 20% 100%,20% 100%,20% 10% }
+    100%{background-size: 20% 100%,20% 100%,20% 100%}
+    }
+    .loaders{
+        display:none;
+        width:70%;
+        flex-direction:row;
+        justify-content: space-around;
+ }
+
+ /* spinner loader for admin delete ------------------------------------------ */
+ 
+ .loader1 {
+    visibility:hidden;    
+    width: 5px;
+    aspect-ratio: 1;
+    background: 
+        linear-gradient(#0000 calc(1*100%/6),#000 0 calc(3*100%/6),#0000 0) left   bottom,
+        linear-gradient(#0000 calc(2*100%/6),#000 0 calc(4*100%/6),#0000 0) center bottom,
+        linear-gradient(#0000 calc(3*100%/6),#000 0 calc(5*100%/6),#0000 0) right  bottom;
+    background-size: 20% 600%;
+    background-repeat: no-repeat;
+    animation: l3 1s infinite linear;
+    }
+    @keyframes l3 {
+        100% {background-position: left top,center top,right top }
+    }               

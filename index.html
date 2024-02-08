@@ -61,7 +61,33 @@
                 }
             }
 
-          
+          /*---- blog spinner loading css style -------- ------------- */
+
+          .loaderBlog {
+            width: 30px;
+            aspect-ratio: 1;
+            --c: no-repeat linear-gradient(#000 0 0);
+            background: 
+                var(--c) 0%   50%,
+                var(--c) 50%  50%,
+                var(--c) 100% 50%;
+            background-size: 20% 100%;
+            animation: l1 1s infinite linear;
+            }
+            @keyframes l1 {
+            0%  {background-size: 20% 100%,20% 100%,20% 100%}
+            33% {background-size: 20% 10% ,20% 100%,20% 100%}
+            50% {background-size: 20% 100%,20% 10% ,20% 100%}
+            66% {background-size: 20% 100%,20% 100%,20% 10% }
+            100%{background-size: 20% 100%,20% 100%,20% 100%}
+            }
+            .loaders{
+                display:none;
+                width:70%;
+                flex-direction:row;
+                justify-content: space-around;
+        }
+
         </style>
     </head>
     <body>
@@ -358,10 +384,14 @@
 
                             </div>
                             <div id="blog-desc" style="display:none;">
-
+                               
                             </div>
                         </div>
-
+                        <div class="loaders">
+                            <div class="loaderBlog"></div>
+                            <div class="loaderBlog"></div> 
+                            <div class="loaderBlog"></div>  
+                        </div>
                         <div class="blog-container">
                             <div class="slide-wraper">
                                 <button id="prev-slide" class=" slider-button materil-slider-button"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
@@ -689,6 +719,7 @@
                         but the majority have suffered alte.
                     </div>
                     <div class="contact-form">
+                        <div id="snackbar"></div>
                         <form  id="contact-form" class="form-fieldset">
                             <div class="input-section">
                                 <label style="color: #A53DFF;">Name *</label>
@@ -734,6 +765,7 @@
                                 <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                                 <small>Erron message</small>
                             </div>
+                            <div class="loader"></div>
                             <button class="contact-submit-button" id="submit-button" >
                                 <span>Submit</span>
                                 <img src="img/Paper Plane.png" style="width:24px;height:24px;"/>
@@ -764,10 +796,13 @@
         
     </body>
 </html>
-
-
 <script src="js/nav.js"></script>
+<script src="js/toastmessage.js"></script>
+<script src="js/blog-index-api.js"></script>
 <script src="js/slide2.js"></script>
+<script src="js/userToken.js"></script>
+
+
 
 <script>
     const form=document.getElementById("contact-form");
@@ -786,7 +821,17 @@
     form.addEventListener('submit',(e)=>{
         e.preventDefault();
         if(validateInputs() && validateTextArea() ){
-            console.log('test of user');
+           const data={
+            names:names.value,
+            email:email.value,
+            location:location2.value,
+            budget:budget.value,
+            subject:subject.value,
+            message:message.value
+           }
+           console.log(data)
+           querries(data)
+           
         }
     })
 
@@ -819,8 +864,8 @@
             setErrorFor(names,'Provided name is too short! please write both names'); 
             return false;  
         }
-        else if(nameValue.length>60){
-            setErrorFor(names,'Provided name is too long! not greater than 60 characters'); 
+        else if(nameValue.length>40){
+            setErrorFor(names,'Provided name is too long! not greater than 40 characters'); 
             return false; 
         }
         else if(!isValidName(nameValue)){
@@ -880,8 +925,8 @@
             setErrorFor(subject,'Subject field is required!');
             return false;
     
-        }else if(subjectValue.length<15){
-            setErrorFor(subject,'too short subject input, atleast 15 character length');
+        }else if(subjectValue.length<20){
+            setErrorFor(subject,'too short subject input, atleast 20 character length');
             return false;
         }
         else{
@@ -925,8 +970,8 @@
             setErrorFor(message,'Subject field is required!');
             return false;
           
-        }else if(messageValue.length<30){
-            setErrorFor(message,'too short message, atleast 30 character length');
+        }else if(messageValue.length<20){
+            setErrorFor(message,'too short message, atleast 20 character length');
             return false;
         }else{
 
@@ -939,7 +984,7 @@
           
           
 // setting blog value from local storage
-
+/*
 const cardContainer=document.querySelector('.image-list');
 const eachCard=document.querySelectorAll('.image-item')
 
@@ -985,6 +1030,6 @@ if(localStorage.getItem("formValue")){
          }
         
     }
-
+*/
 
 </script>

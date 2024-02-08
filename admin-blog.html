@@ -151,6 +151,262 @@
             line-height: 24px; 
             margin-top:0;
         }
+
+        /* commment list css start here --------------------------------- */
+        
+        .comment-list{
+                display: flex;
+                width:100%;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 35px;
+                border-radius: 10px;
+            }
+
+            .user-comment{
+                display: flex;
+                width:100%;
+                justify-content: center;
+                align-items: center;
+                gap: 35px;
+                border-radius: 10px;
+                padding:2% 4%;
+                padding-bottom:0px;
+                /*background: #FFF; */
+                
+            }
+         
+            .sender-message{
+                display: flex;
+                width:60%;
+                padding: 0 10;
+                flex-direction: column;
+                justify-content: center;
+                
+                gap: 36px;
+                border-left: 1px solid #000;
+                color:#697484;
+                font-family: "Work Sans";
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 24px; 
+                text-wrap: wrap;
+            }
+
+            .sender-message .showmore{
+                color:blue;
+                cursor: pointer;
+                display: none;
+            }
+
+            .sender-message .showless{
+                color:red;
+                cursor: pointer;
+                display: none;
+            }
+
+            .sender-profile{
+                display: flex;
+                width:35%;
+                padding: 3px 12px;
+                justify-content:space-around;
+                align-items:center;
+                
+            }
+
+            .profile-container{
+                display: flex;
+                width:80%;
+                padding: 10px 12px;
+                justify-content:space-around;
+                align-items:flex-start;
+              
+            }
+
+            /*
+            .sender-image{
+                margin: auto;
+                width: 45px;
+                height: 45px;
+                border-radius:50%;
+                flex-shrink: 0;
+                background: url("img/blog/blog1.png"), lightgray 50% / cover no-repeat;
+                display:none;
+            }
+            */
+            .sender-info{
+                display: flex;
+                width:80%;
+                padding:0 10px;
+                flex-direction: column;
+                justify-content: center;
+                align-items:flex-start;
+                gap: 10px;
+
+            }
+            .sender-info span{
+                color: #000;
+                text-align: center;
+                font-family: "Work Sans";
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 30px; 
+                
+            }
+           
+            #sendButton{
+                cursor: pointer;
+            }
+            @media(max-width:768px){
+                .single-blog-section{
+                    padding-top:25%;
+                    width:85%;
+                }
+                .image-container{
+                    height:auto;
+                }
+                .blog-count{
+                    flex-direction: column-reverse;
+                    align-items:center;
+                    padding-bottom:17%;
+                }
+                .comment-count{
+                    width:45%;
+                    align-self: center;
+                }
+               
+                .blog-date{
+                    width:40%;
+                }
+                .blog-text p{
+                    text-align: center;
+                }
+                
+                .comment-form-title{
+                    text-align: center;
+                    line-height:40px;
+                    width:100%;
+                }
+                .comment-form{
+                    padding:0;
+                    width:100%;
+                }
+
+                .comment-input-section-email,
+                .comment-input-section-comment,
+                .comment-input-section-names{
+                    display: flex;
+                    flex-direction: column;
+                    width:100%;
+                }
+                .comment-input-section-names .comment-firstname,
+                .comment-input-section-names .comment-lastname{
+                    width:100%;
+                    display:flex;
+                    flex-direction: column;
+                }
+
+                .comment-list{
+                    width:100%;
+                   
+                }
+                .user-comment{
+                    display: flex;
+                    flex-direction: column;
+                }
+                .sender-profile{
+                    width:100%;
+                }
+               
+                .sender-info{
+                  width:100%;
+                }
+                .sender-message{
+                    width:100%;
+                    border: none;
+                }
+            }
+
+
+            @media(max-width:465px){
+                .container{margin-top:35%};
+                .single-blog-section{
+                    padding-top:35%;
+                    width:90%;
+                }
+                .image-container{
+                    height:auto;
+                }
+
+                .comment-form-title{
+                    width:100%;
+                }
+
+                .blog-count{
+                    flex-direction: column-reverse;
+                    align-items:center;
+                    padding-bottom:70px;
+                }
+                .comment-count{
+                    width:80%;
+                    justify-content: center;
+                    align-self: center;
+                }
+                .blog-date{
+                    justify-content:center;
+                    width:80%;
+                }
+            }
+
+
+                .checkbox-in{
+                    display:none;
+                }
+                
+                .sent-message-full{
+                    display:none;
+                    transition: 0.5s linear;
+                }
+                label{
+                    display:inline-block;
+                    margin-top:-20px;
+                    align-self: self-start;
+                    font-size:15px;
+                    cursor:pointer;
+                    color:#A53DFF
+                }
+                .checkbox-in:checked ~ .sent-message-full{
+                    display:flex;
+                }
+                .checkbox-in:checked ~ .sent-message{
+                    display:none;
+                }
+                .checkbox-in:checked ~ label{
+                   visibility:hidden;
+                }
+                .checkbox-in:checked ~ label:after{
+                    content:"show less";
+                   visibility:visible;
+                   display:flex;
+                   color:red;
+                   margin-top:-20px;
+                }
+
+               .delete-comment{
+                background-color:#A53DFF;
+                border-color: #A53DFF;
+                width:70%;
+                color:white;
+                padding:5%;
+                border-radius:5px;
+                cursor: pointer;
+
+               }       
+              
+
     </style>
     </head>
     <body>
@@ -216,63 +472,86 @@
                 </div>
             </div>
         </div>
+        <div id="snackbar"></div>
         <div class="right-side" id="right-side">
             <div class="user-info">
                 <div class="user-info-box1">
                     <button id="show-menu" onclick="showMenu()"><img src="img/menu.svg" width="18px"></button> 
                     <button id="close-menu"  onclick="closeMenu()"><i class="fa fa-close" style="font-size:30px;color:#A53DFF"></i></button>
                     <div class="user">Munezero Emmanuel</div>
-                    <a href="index.html"><button class="logout">logout</button></a>
+                    <a href="#"><button onclick="userLogout()" class="logout">logout</button></a>
                 </div>
             </div>
+           
             <div class="single-blog-section">
                 <div class="blog-title">
-                    <h4 id="blog-title">This a title for my first article, thank you for reading  </h4>
+                    <h4 id="blog-title"><!-- blog title should be displayed here -->  </h4>
+                </div>
+
+                <div class="loaders" style="padding-bottom:30%;">
+                    <div class="loader"></div>
+                    <div class="loader"></div> 
+                    <div class="loader"></div>  
                 </div>
                 <div class="blog-thumbnail">
                     <div class="image-container">
-                        <img src="img/blog/blog1.png" alt="Blog Image Thumbnail"  class="blog-image"/> 
-                    </div>
-                    <div class="blog-count">
-                        <div class="comment-action-button" >
-                            <button style="background-color:#A53DFF;" onclick="updateBlog()" ><span><i class="fa fa-pencil" ></i></span> Edit</button> 
-                             <button style="background-color:#8C1919;" onclick="deleteThisBlog()"><span><i class="fa fa-trash" ></i></span> Delete</button>
-                         </div>
-                         <div class="comment-date">Posted on:<span id="postedOn">2022-01-11</span></div>
-                        <div class="comment-count">
-                            <span>5<i class="fa fa-thumbs-up" style="font-size:20px; color:#A53DFF"></i></span>
-                             <span>10<i class="fa fa-comments" style="font-size:20px; color:#A53DFF"></i></span>
-                        </div>
-                        
+                        <img src="" alt="Blog Image Thumbnail"  class="blog-image"/> 
                     </div>
 
+
+                    <div class="blog-count">
+                        <div class="comment-action-button" >
+                            <!--- action buttpon update and delete sholud be displayed here-->
+                         </div>
+                         <div class="comment-date blog-date"><!-- blog post date should be displayed here--></div>
+                        <div class="comment-count">
+                             <span class="like-span user-like"><!-- like count sholud be displayed here--></span>
+                             <span class="comment-span" ><!-- comment count should be displayed here--></span>
+                        </div>
+                    </div>
                 </div>
+                
                 <div class="blog-text" id="blog-text">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla purus arcu, varius eget velit non, laoreet 
-                        imperdiet orci. Mauris ultrices eget lorem ac vestibulum. Suspendis imperdiet, Lorem ipsum dolor sit amet, 
-                        consectetur adipiscing elit. Nulla purus arcu, varius eget velit non.Lorem ipsum dolor sit amet, consectetur 
-                        adipiscing elit. Nulla purus arcu, varius eget velit non
+                    <p class="blog-intro">
+                        <!-- blog intro here--> 
                     </p>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla purus arcu, varius eget velit non, laoreet 
-                        imperdiet orci. Mauris ultrices eget lorem ac vestibulum. Suspendis imperdiet, Lorem ipsum dolor sit amet, 
-                        consectetur adipiscing elit. Nulla purus arcu, varius eget velit non.Lorem ipsum dolor sit amet, consectetur 
-                        adipiscing elit. Nulla purus arcu, varius eget velit non.Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Nulla purus arcu, varius eget velit non, laoreet imperdiet orci. Mauris ultrices eget lorem ac vestibulum. 
-                        Suspendis imperdiet, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla purus arcu, varius eget velit 
-                        non.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla purus arcu, varius eget velit non.
-                        
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla purus arcu, varius eget velit non, laoreet 
-                        imperdiet orci. Mauris ultrices eget lorem ac vestibulum. Suspendis imperdiet, Lorem ipsum dolor sit amet, 
-                        consectetur adipiscing elit. Nulla purus arcu, varius eget velit non.Lorem ipsum dolor sit amet, consectetur 
-                        adipiscing elit. Nulla purus arcu, varius eget velit non  
+                    <p class="content"> 
+                      <!-- blog description here-->
                     </p>
                 </div>
+                <h3>Comment list</h3>
+                <div class="comment-list">
+                    
+                    <div class="user-comment">
+                        <div class="sender-profile">
+                            <div class="profile-container">
+                                <div class="sender-image"></div>
+                                <div class="sender-info">
+                                    <span>Emmanuel Munezero</span>
+                                    <span style="font-size:14px;margin-top:-15px">2024-01-15 12:00 </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sender-message">
+                            <input type="checkbox" class="checkbox-in" id="ch2" />
+                            <span class="sent-message">
+                            
+                               <!-- this work on less text -->
+                           
+                            </span>
+                            <span class="sent-message-full">
+                                Lorem ipsum dolor sit amet, consectetur 
+                            </span>
+    
+                            <label for="ch2">Read more</label>
+                        </div>
+                    </div>
+                    
+                 </div>
             </div>
         </div> 
     </div>
-      
+   
     <div class="footer-section">
         Copyright © 2022 Emmanuel
         <p id="demo"></p>
@@ -283,43 +562,27 @@
 
 
 <script src="js/admin-menu.js"></script>
-
+<script src="js/toastmessage.js"></script>
+<script src="js/authchecks.js"></script>
+<script src="js/admin-singleBlog-api.js"></script>
 <script>
- 
-    const searchParams = new URLSearchParams(window.location.search);
-    const blogText=searchParams.get('id');
-    var data=[];
 
-    if(localStorage.getItem("formValue")){
-         data=JSON.parse(localStorage.getItem("formValue"));
-        let singleBlog=data[blogText];
-        console.log(singleBlog)
-        if(singleBlog){
-            document.getElementById("blog-title").innerText=singleBlog.title;
-            document.getElementById("blog-text").innerHTML=singleBlog.desc;
-            document.getElementById("postedOn").innerText=singleBlog.date;
-            document.querySelector(".blog-image").setAttribute("src",singleBlog.img)
-            
-        }
-    }
-        
-    function updateBlog(){
+   fetchSingleBlog()
+   fetchSingleBlogComments()
+   fetchSingleBlogLikes()
+
+    function updateBlog(blogText){
         window.location.href=`new-article.html?updateBlog=${blogText}`;
         //console.log('this update');
     }
 
-    function deleteThisBlog(){
-        //console.log('tettttttte')
-        data=JSON.parse(localStorage.getItem("formValue"));
-        let singleBlog=data[blogText];
-        if(singleBlog){
-            data.splice(blogText,1);
-            localStorage.setItem("formValue", JSON.stringify(data));
-            window.location.href='admin-blog-list.html';
-        }
+    function deleteThisBlog(blogText){
+        deleteBlog(blogText)
     }
     
-  
+  function deleteComment (commetId){
+
+  }
 
 
 

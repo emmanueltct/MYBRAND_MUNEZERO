@@ -55,7 +55,6 @@
                 display:flex;
                 width:100%;
                 height:300px;
-                background-color: red;
                 overflow:hidden;
             }
             .blog-image{
@@ -74,7 +73,7 @@
                 
             }
 
-            .comment-date{
+            .blog-date{
                 display:flex;
                 align-items:center;
                 justify-content: space-between;
@@ -368,7 +367,7 @@
                     align-self: center;
                 }
                
-                .comment-date{
+                .blog-date{
                     width:40%;
                 }
                 .blog-text p{
@@ -445,7 +444,7 @@
                     justify-content: center;
                     align-self: center;
                 }
-                .comment-date{
+                .blog-date{
                     justify-content:center;
                     width:80%;
                 }
@@ -522,7 +521,54 @@
                 visibility: visible;
                 color:rgb(240, 37, 148) ; 
             } 
-                
+            .blog-error{
+                margin-top: 20%;
+                font-size:x-large;
+                color:rgb(240, 37, 148) ; 
+                height:100vh;
+                font-family: "Work Sans";
+            } 
+            
+            .loader {
+                width: 48px;
+                height: 48px;
+                border: 5px solid #FFF;
+                border-bottom-color: #FF3D00;
+                border-radius: 50%;
+                display:none;
+                box-sizing: border-box;
+                animation: rotation 1s linear infinite;
+            }
+
+            @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+            }
+            
+            /* spinner loader for user likes -------------- */
+          
+       
+            .loader1 {
+                visibility:hidden;
+                width: 5px;
+                aspect-ratio: 1;
+                background: 
+                    linear-gradient(#0000 calc(1*100%/6),#000 0 calc(3*100%/6),#0000 0) left   bottom,
+                    linear-gradient(#0000 calc(2*100%/6),#000 0 calc(4*100%/6),#0000 0) center bottom,
+                    linear-gradient(#0000 calc(3*100%/6),#000 0 calc(5*100%/6),#0000 0) right  bottom;
+                background-size: 20% 600%;
+                background-repeat: no-repeat;
+                animation: l3 1s infinite linear;
+                }
+                @keyframes l3 {
+                    100% {background-position: left top,center top,right top }
+                }
+                                    
+
         </style>
     </head>
 <body>
@@ -541,7 +587,7 @@
             <li><a href="index.html#portfolio">Portfolio</a></li>
             <li><a href="index.html#blog">Blog</a></li>
             <li><a href="index.html#contact">contact</a></li>
-            <li><a href="login.html"><button style="color:#FFFFFF">Login</button></a></li>
+            <li id="loginLink"><a href="login.html"><button style="color:#FFFFFF">Login</button></a></li>
         </ul>
     </div>
 
@@ -553,44 +599,33 @@
     <div class="container">
         <div class="single-blog-section">
             <div class="blog-title">
-                <h3>This a title of my first blog, thank you for reading my post</h3> 
+                <h3><!-- section for blog title  --></h3> 
             </div>
             <div class="blog-thumbnail">
                 <div class="image-container">
-                    <img src="img/blog/blog1.png" class="blog-image"/> 
+                    <!-- blog image will be displayed here--> 
                 </div>
                 <div class="blog-count">
-                    <div class="comment-date">Posted on:2022-01-11</div>
+                    <div class="blog-date">Posted on:2022-01-11</div>
                     <div class="comment-count">
-                        <span class="like-span">5 <i class="fa fa-thumbs-up" style="font-size:20px; color:#A53DFF"></i></span>
-                        <span class="comment-span">10<i class="fa fa-comments" style="font-size:20px; color:#A53DFF"></i></span></div>
+                        <span class="loader1"></span>
+                        <span class="like-span user-like" onclick="userLike()"></span>
+                        
+                        <!-- <span class="like-span user-unlike" onclick="userLike()">5 <i class="fa fa-thumbs-down" style="font-size:20px; color:#A53DFF"></i></span>-->
+                        <span class="comment-span"></span></div>
                 </div>
             </div>
+    
             <div class="blog-text">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla purus arcu, varius eget velit non, laoreet 
-                    imperdiet orci. Mauris ultrices eget lorem ac vestibulum. Suspendis imperdiet, Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit. Nulla purus arcu, varius eget velit non.Lorem ipsum dolor sit amet, consectetur 
-                    adipiscing elit. Nulla purus arcu, varius eget velit non
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla purus arcu, varius eget velit non, laoreet 
-                    imperdiet orci. Mauris ultrices eget lorem ac vestibulum. Suspendis imperdiet, Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit. Nulla purus arcu, varius eget velit non.Lorem ipsum dolor sit amet, consectetur 
-                    adipiscing elit. Nulla purus arcu, varius eget velit non.Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                    Nulla purus arcu, varius eget velit non, laoreet imperdiet orci. Mauris ultrices eget lorem ac vestibulum. 
-                    Suspendis imperdiet, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla purus arcu, varius eget velit 
-                    non.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla purus arcu, varius eget velit non.
-                    
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla purus arcu, varius eget velit non, laoreet 
-                    imperdiet orci. Mauris ultrices eget lorem ac vestibulum. Suspendis imperdiet, Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit. Nulla purus arcu, varius eget velit non.Lorem ipsum dolor sit amet, consectetur 
-                    adipiscing elit. Nulla purus arcu, varius eget velit non  
+                <p class="blog-intro" style="font-style: italic;"></p>
+                <p class="content">
+                    <!-- blog description data will be displayed here -->
                 </p>
             </div>
             <div class="blog-comment-section">
                 <div class="comment-form-title" id="comment-form">Add your Comment here</div>
-                <form class="comment-form" id="comment-form">
+                <form class="comment-form" id="commentform" method="post">
+                    <!---
                     <div class="comment-input-section-names">
                         <div class="comment-firstname validation">
                             <label>Firstname</label>
@@ -615,68 +650,25 @@
                         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                         <small>Erron message</small>
                     </div>
+                -->
                     <div class="comment-input-section-comment validation">
-                        <label>Comment</label>
-                        <textarea cols="5" rows="6" id="comment-desc"  onKeyUp='validateTextArea()'></textarea>
+                        <div id="snackbar"></div>
+                        <label>Comment:<i class="error" style="color:red"></i></label>
+                        <textarea cols="5" rows="6" id="comment-desc"></textarea>
                         <i class="fa fa-check-circle" aria-hidden="true"></i>
                         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                         <small>Erron message</small>
                     </div>
+                    
                     <div class="comment-input-section-button">
-                        <button id="sendButton" >Save</button>
+                        <span class="loader"></span>
+                        <button type="submit" id="sendButton" class="sendButton" >Save</button>
                     </div>
                 </form>
             </div>
 
             <div class="comment-list">
-                <div class="user-comment">
-                    <div class="sender-profile">
-                        <div class="profile-container">
-                            <div class="sender-image"></div>
-                            <div class="sender-info">
-                                <span>Emmanuel Munezero</span>
-                                <span style="font-size:14px;margin-top:-15px">2024-01-15 12:00 </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sender-message">
-                            <input type="checkbox" class="checkbox-in" id="ch0" />
-                            <span class="sent-message"> 
-                                <!-- this work on less text --> 
-                            </span>
-                            <span class="sent-message-full">
-                            Lorem ipsum dolor sit amet, consectetur 
-                            adipiscing elit. Nulla purus arcu, varius 
-                            eget velit non, laoreet imperdiet orci. 
-                            Mauris ultrices eget lorem ac vestibulum. 
-                            Suspendis imperdiet, Lorem ipsum dolor
-                        </span>
-                        <label for="ch0">Read more</label> 
-                    </div>
-                </div>
-                <div class="user-comment">
-                    <div class="sender-profile">
-                        <div class="profile-container">
-                            <div class="sender-image"></div>
-                            <div class="sender-info">
-                                <span>Emmanuel Munezero</span>
-                                <span style="font-size:14px;margin-top:-15px">2024-01-15 12:00 </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sender-message">
-                        <input type="checkbox" class="checkbox-in" id="ch1" />
-                        <span class="sent-message">
-                           <!-- this work on less text -->
-                        </span>
-                        <span class="sent-message-full">
-                            Lorem ipsum dolor sit amet, consectetur 
-                            adipiscing elit
-                        </span>
-                        <label for="ch1">Read more</label>
-                    </div>
-                </div>
-
+                <!--
                 <div class="user-comment">
                     <div class="sender-profile">
                         <div class="profile-container">
@@ -690,64 +682,19 @@
                     <div class="sender-message">
                         <input type="checkbox" class="checkbox-in" id="ch2" />
                         <span class="sent-message">
+                        -->
                            <!-- this work on less text -->
+                        <!--
                         </span>
                         <span class="sent-message-full">
                             Lorem ipsum dolor sit amet, consectetur 
-                           
                         </span>
 
                         <label for="ch2">Read more</label>
                     </div>
+                  -->
                 </div>
-
-                <div class="user-comment">
-                    <div class="sender-profile">
-                        <div class="profile-container">
-                            <div class="sender-image"></div>
-                            <div class="sender-info">
-                                <span>Emmanuel Munezero</span>
-                                <span style="font-size:14px;margin-top:-15px">2024-01-15 12:00 </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sender-message">
-                        <input type="checkbox" class="checkbox-in" id="ch3" />
-                        <span class="sent-message">
-                            <!-- this work on less text -->
-                        </span>
-                        <span class="sent-message-full">
-                            Lorem ipsum dolor sit amet, consectetur 
-                            adipiscing elit.method inserts a set of Node objects or string objects after the last child of the
-                        </span>
-
-                        <label for="ch3">Read more</label>
-                    </div>
-                </div>
-
-                <div class="user-comment">
-                    <div class="sender-profile">
-                        <div class="profile-container">
-                            <div class="sender-image"></div>
-                            <div class="sender-info">
-                                <span>Emmanuel Munezero</span>
-                                <span style="font-size:14px;margin-top:-15px">2024-01-15 12:00 </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sender-message">
-                        <input type="checkbox" class="checkbox-in" id="ch4"  />
-                        <span class="sent-message">
-                           <!-- this work on less text -->
-                        </span>
-                        <span class="sent-message-full">
-                            Lorem ipsum dolor sit amet, consectetur 
-                            adipiscing elit.method inserts a set of Node objects or string objects after the last child of the
-                        </span>
-
-                        <label for="ch4">Read more</label>
-                    </div>
-                </div>
+               
              </div>
         </div>
     </div>
@@ -759,169 +706,41 @@
     </section>
 
 </html>
-
-
 <script src="js/nav.js"></script>
+<script src="js/userToken.js"></script>
+<script src="js/toastmessage.js"></script>
+<script src="js/single-blog-api.js"></script>
+
 
 <script>
-    const userComment=document.getElementsByClassName("sender-message");
-    var length=userComment.length;
-
-for(var i=0;i<length;i++){
-    var innerblock=userComment[i].childNodes[5].innerText;
-     var lessTexT=userComment[i].childNodes[3];
-     var checkbox=userComment[i].childNodes[1];
-     var showButton=userComment[i].childNodes[7];
-     //console.log(userComment[i].childNodes);
-
-     let newStr = innerblock.replace(/\s+/g, ' ');
-    
-
-    if(newStr.length>50){
-        var newText=newStr.trim().substring(0,50)+".....";  
-        lessTexT.innerText=newText;
-    }else{
-       lessTexT.style.display="none" ;
-       showButton.style.display="none";
-       userComment[i].childNodes[5].innerText=newStr
-       userComment[i].childNodes[5].style.display="flex";
-    }
-
-      
-    };
-    
-    const form=document.getElementById("comment-form");
-    const allInput=document.querySelectorAll(".validation");
-
-    const fname=document.getElementById("fname");
-    const lname=document.getElementById("lname");
-    const email=document.getElementById("email");
-    const message=document.getElementById("comment-desc");
-    const sendButton=document.getElementById("sendButton");
-    sendButton.style.pointerEvents = "none";
-
-    form.addEventListener('submit',(e)=>{
-        e.preventDefault();
-       if(validateInputs() && validateTextArea() ){
-            console.log('validation its work');
-       }
-    
-    })
+ 
 
 
-    allInput.forEach(inputElement=>{
-            inputElement.addEventListener('keyup',()=>{                //console.log(inputElement)
-                
-                if(validateInputs()){
-                  validateTextArea()  
-                }
-            })
-        })
+  fetchSingleBlog()
+  fetchSingleBlogComments() 
+  fetchSingleBlogLikes()
 
+function userLike(){
+    createLike()
+}
 
-    function validateInputs(){
-        const fnameValue=fname.value.trim();
-        const lnameValue=lname.value.trim();
-        const emailValue=email.value.trim();
-        //const locationValue=location2.value.trim();
-       // const budgetValue=budget.value.trim();
-        //const subjectValue=subject.value.trim();
-    
+const form=document.getElementById("commentform")
+form.addEventListener('submit',(e)=>{
+    e.preventDefault()
 
-        // names field validation 
-
-        if(fnameValue ===''){
-            setErrorFor(fname,'Name field is required!');
-            return false; 
-           
-        }else if(fnameValue.length<10){
-            setErrorFor(fname,'Provided name is too short! please add the second name'); 
-            return false;  
-        }
-        else if(fnameValue.length>40){
-            setErrorFor(fname,'Provided name is too long! not greater than 60 characters'); 
-            return false; 
-        }
-        else if(!isValidName(fnameValue)){
-            setErrorFor(fname,'please provide Secondname do not include any number or symbols'); 
-            return false
-        }
-        else{
-            setSuccessFor(fname);
-            
-        }
-
-        // email field validation 
-
-        if(emailValue === ''){
-            setErrorForEmail(email,'Email field is required!');
-           return false;
-        }else if(!isEmail(emailValue)){
-            setErrorForEmail(email,'invalid email format');
-            return false; 
-            
-        }else{
-            setSuccessForEmail(email);
-            validateTextArea() ;
-        }
-
-    }
+    const commentMessage=document.querySelector('#comment-desc').value;
+    createComment(commentMessage)
+   
+})
 
 
 
-    function setErrorFor(input,message){
-        const inputSection=input.parentElement;
-        const small=inputSection.querySelector('small');
-        small.innerText=message;
 
-        inputSection.className='validation error';
-    }
-
-    function setSuccessFor(input){
-        const inputSection=input.parentElement;
-        inputSection.className=' validation success';
-    }
-    //--------------------------------------------- email validations ------------- 
-    function setErrorForEmail(input,message){
-        const inputSection=input.parentElement;
-        const small=inputSection.querySelector('small');
-        small.innerText=message;
-
-        inputSection.className='comment-input-section-email validation error';
-    }
-
-    function setSuccessForEmail(input){
-        const inputSection=input.parentElement;
-        inputSection.className='comment-input-section-email validation success';
-    }
-
-//---------------------------------------------- comment box validation ----------------
-
-    function setErrorForComment(input,message){
-        const inputSection=input.parentElement;
-        const small=inputSection.querySelector('small');
-        small.innerText=message;
-
-        inputSection.className='comment-input-section-comment validation error';
-    }
-
-    function setSuccessForComment(input){
-        const inputSection=input.parentElement;
-        inputSection.className='comment-input-section-comment validation success';
-    }
+ 
+   
 
 
-
-    function isValidName(fname){
-        return /^([a-zA-Z]{8,})+((\s)[a-zA-Z]{2,})?$/.test(fname)
-    }
-
-
-    function isEmail(email){
-        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)
-    }
-
-
+/*
     function validateTextArea(){
         const messageValue=message.value.trim();
         if(messageValue === ''){
@@ -939,29 +758,12 @@ for(var i=0;i<length;i++){
        
     }
 
-
+*/
 
    // seting value from local storage of each blog
-
-   const searchParams = new URLSearchParams(window.location.search);
-    const blogText=searchParams.get('id');
-    var data=[];
-    let x = Math.floor((Math.random() * 10) + 1);
-
-    if(localStorage.getItem("formValue")){
-         data=JSON.parse(localStorage.getItem("formValue"));
-        let singleBlog=data[blogText];
-        //console.log(singleBlog)
-        if(singleBlog){
-            document.querySelector(".blog-title h3").innerText=singleBlog.title;
-            document.querySelector(".like-span").innerHTML=(x+4)+' <i class="fa fa-thumbs-up" style="font-size:20px; color:#A53DFF">';
-            document.querySelector(".comment-span").innerHTML=x+ '<i class="fa fa-comments" style="font-size:20px; color:#A53DFF"></i>';
-            document.querySelector(".blog-text").innerHTML=singleBlog.desc;
-            document.querySelector(".comment-date").innerText='created on '+singleBlog.date;
-            document.querySelector(".blog-image").setAttribute("src",singleBlog.img)
-            
-        }
-    }
+   //const searchParams = new URLSearchParams(window.location.search);
+   // const blogText=searchParams.get('id');
+   
 
     
 </script>
