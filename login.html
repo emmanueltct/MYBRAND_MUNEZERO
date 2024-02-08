@@ -200,7 +200,9 @@
             <div class="login-section">
                 <div class="form-title">For Admin Login Only</div>
                 <span ></span>
+                <div class="login-error" style="width:100%;text-align:center;"></div>
                 <div class="login-form" method="POST">
+                    
                     <form id="login" class="form">
                         <label>Username :</label>
                         <input id="username" type="text" value=""/>
@@ -262,8 +264,11 @@
            document.getElementById("error-password").innerText='';  
         }
 
-        if(usernameValue && passwordValue){
+        if(usernameValue==="Emmanuel" && passwordValue==="Emmanuel"){
             window.location.href='admin-index.html';
+        }else{
+        document.querySelector('.login-error').innerText='Invalid username or Password';
+        document.querySelector('.login-error').style.color='red';
         }
     }
   </script>

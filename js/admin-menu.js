@@ -17,16 +17,24 @@ function showMenu() {
 
 
 function myFunction() {
- // let w = window.innerWidth;
- // let h = window.outerHeight;
- /*
+
+  //alert('this is work');
+  let w = window.innerWidth;
+  let h = window.outerHeight;
+ 
   if(w>=600){
     document.getElementById("left-side").style.display="flex";
-    document.getElementById("left-side").style.display="210px";
+    document.getElementById("left-side").style.width="240px";
+    document.getElementById("left-side").style.flexDirection="column";
     document.getElementById("show-menu").style.display= "none";
     document.getElementById("close-menu").style.display="none";
+ 
+  }else{
+    document.getElementById("left-side").style.display="none";
+    document.getElementById("close-menu").style.display="none";
+    document.getElementById("show-menu").style.display= "block";
   }
-  */
+  
  //return w
 }
 

@@ -1178,8 +1178,8 @@ section{
         .slide-wraper .slider-button{
             position: absolute;
             top:50%;
-            height:50px;
-            width: 50px;
+            height:30px;
+            width: 30px;
             color:#fff;
             border: none;
             outline: none;
@@ -1200,7 +1200,7 @@ section{
             display:none;
         }
         .slide-wraper .slider-button#next-slide{
-            right:-20;
+            right:-45;
         }
 
         .blog-card-text{
@@ -1778,6 +1778,12 @@ section{
                 border-bottom: 1px solid #E6E8EB;
                
             }
+            .input-section textarea{
+                width:100%;
+                border:none;
+                border: 1px solid #E6E8EB; 
+                border-radius:10px;
+            }
     
             .input-section input:hover{
                 width:100%;
@@ -1785,15 +1791,24 @@ section{
                 border: 1px solid #A53DFF;
                 border-radius:20px;
             }
-            
+
+            .input-section textarea:hover{
+                
+                border: 1px solid #A53DFF;
+            }
+    
+
             .budget-subject{
                 display: flex;
+                width: 100%;
+                flex-direction: column;
                 align-items: flex-start;
                 gap: 24px;
+                
             }
     
             .budget-subject .input-section{
-                width:48%;
+                width:100%;
             }
             .contact-submit-button{
                 width:40%;
@@ -1806,6 +1821,7 @@ section{
                 background: #A53DFF;
                 border:none;
                 border-radius:10px;
+                
             }
 
             .contact-submit-button:hover {
@@ -1980,5 +1996,17 @@ section{
                 }
     
             }
-              
-        
+            
+       .active{
+        display: flex;
+        padding: 12px 24px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        border-radius: 4px;
+        background:  #A53DFF;
+        margin-top:-10px;
+        border:none;
+        color: #FFF;
+       }

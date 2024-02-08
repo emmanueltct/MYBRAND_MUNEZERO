@@ -347,6 +347,9 @@
                 
             }
            
+            #sendButton{
+                cursor: pointer;
+            }
             @media(max-width:768px){
                 .single-blog-section{
                     padding-top:25%;
@@ -381,6 +384,7 @@
                     padding:0;
                     width:100%;
                 }
+
                 .comment-input-section-email,
                 .comment-input-section-comment,
                 .comment-input-section-names{
@@ -391,6 +395,8 @@
                 .comment-input-section-names .comment-firstname,
                 .comment-input-section-names .comment-lastname{
                     width:100%;
+                    display:flex;
+                    flex-direction: column;
                 }
 
                 .comment-list{
@@ -478,6 +484,44 @@
                    color:red;
                    margin-top:-20px;
                 }
+
+                       
+        /*   css for  input validation  ----------------------------- */
+
+        .validation{
+                position:relative;
+            }
+            .validation i{
+                position:absolute;
+                top:10px;
+                right:5px;
+            }
+            .validation.success input{
+                border-bottom: 1px solid;
+                border-color: #A53DFF;
+            }
+            .validation.error input{
+                border-bottom: 1px solid;
+                border-color: rgb(240, 37, 148);
+            }
+            .validation i{
+                visibility: hidden;
+            }
+            .validation.success i.fa-check-circle{
+                color: #A53DFF;
+                visibility: visible;
+            }
+            .validation.error i.fa-exclamation-circle{
+                visibility: visible;
+                color:rgb(240, 37, 148) ;
+            }
+            .validation  small{
+                visibility: hidden;
+            }
+            .validation.error small{
+                visibility: visible;
+                color:rgb(240, 37, 148) ; 
+            } 
                 
         </style>
     </head>
@@ -487,7 +531,7 @@
 <html>
     <div class="nav-bar" id="nav-bar">
         <div class="logo">
-            <div class="profile-logo"><h1 style="margin:20px;">E</h1></div>
+            <div class="profile-logo"><h1 style="margin:10px;" >E</h1></div>
             <div class="profile-text">Emmanuel</div>
         </div>
         <ul class="link" id="link">
@@ -518,8 +562,8 @@
                 <div class="blog-count">
                     <div class="comment-date">Posted on:2022-01-11</div>
                     <div class="comment-count">
-                        <span>5 <i class="fa fa-thumbs-up" style="font-size:20px; color:#A53DFF"></i></span>
-                        <span>10<i class="fa fa-comments" style="font-size:20px; color:#A53DFF"></i></span></div>
+                        <span class="like-span">5 <i class="fa fa-thumbs-up" style="font-size:20px; color:#A53DFF"></i></span>
+                        <span class="comment-span">10<i class="fa fa-comments" style="font-size:20px; color:#A53DFF"></i></span></div>
                 </div>
             </div>
             <div class="blog-text">
@@ -546,29 +590,42 @@
             </div>
             <div class="blog-comment-section">
                 <div class="comment-form-title" id="comment-form">Add your Comment here</div>
-                <div class="comment-form">
+                <form class="comment-form" id="comment-form">
                     <div class="comment-input-section-names">
-                        <div class="comment-firstname">
+                        <div class="comment-firstname validation">
                             <label>Firstname</label>
-                            <input type="text" value=""/>
+                            <input id="fname" type="text" value=""/>
+                            <i class="fa fa-check-circle" aria-hidden="true"></i>
+                            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                            <small>Erron message</small>
                         </div>
-                        <div class="comment-lastname">
+                        <div class="comment-lastname validation">
                             <label>Lastname</label>
-                            <input type="text" value=""/>
+                            <input id="lname" type="text" value="" placeholder="optional"/>
+                            <i class="fa fa-check-circle" aria-hidden="true"></i>
+                            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                            <small>Erron message</small>
                         </div>
                     </div>
-                    <div class="comment-input-section-email">
+                    
+                    <div class="comment-input-section-email validation">
                         <label>Email</label>
-                        <input type="text" value=""/>
+                        <input id="email"  type="text" value=""/>
+                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                        <small>Erron message</small>
                     </div>
-                    <div class="comment-input-section-comment">
+                    <div class="comment-input-section-comment validation">
                         <label>Comment</label>
-                        <textarea cols="5" rows="6"></textarea>
+                        <textarea cols="5" rows="6" id="comment-desc"  onKeyUp='validateTextArea()'></textarea>
+                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                        <small>Erron message</small>
                     </div>
                     <div class="comment-input-section-button">
-                        <button>Save</button>
+                        <button id="sendButton" >Save</button>
                     </div>
-                </div>
+                </form>
             </div>
 
             <div class="comment-list">
@@ -679,7 +736,7 @@
                         </div>
                     </div>
                     <div class="sender-message">
-                        <input type="checkbox" class="checkbox-in" id="ch4" />
+                        <input type="checkbox" class="checkbox-in" id="ch4"  />
                         <span class="sent-message">
                            <!-- this work on less text -->
                         </span>
@@ -733,5 +790,178 @@ for(var i=0;i<length;i++){
       
     };
     
+    const form=document.getElementById("comment-form");
+    const allInput=document.querySelectorAll(".validation");
+
+    const fname=document.getElementById("fname");
+    const lname=document.getElementById("lname");
+    const email=document.getElementById("email");
+    const message=document.getElementById("comment-desc");
+    const sendButton=document.getElementById("sendButton");
+    sendButton.style.pointerEvents = "none";
+
+    form.addEventListener('submit',(e)=>{
+        e.preventDefault();
+       if(validateInputs() && validateTextArea() ){
+            console.log('validation its work');
+       }
+    
+    })
+
+
+    allInput.forEach(inputElement=>{
+            inputElement.addEventListener('keyup',()=>{                //console.log(inputElement)
+                
+                if(validateInputs()){
+                  validateTextArea()  
+                }
+            })
+        })
+
+
+    function validateInputs(){
+        const fnameValue=fname.value.trim();
+        const lnameValue=lname.value.trim();
+        const emailValue=email.value.trim();
+        //const locationValue=location2.value.trim();
+       // const budgetValue=budget.value.trim();
+        //const subjectValue=subject.value.trim();
+    
+
+        // names field validation 
+
+        if(fnameValue ===''){
+            setErrorFor(fname,'Name field is required!');
+            return false; 
+           
+        }else if(fnameValue.length<10){
+            setErrorFor(fname,'Provided name is too short! please add the second name'); 
+            return false;  
+        }
+        else if(fnameValue.length>40){
+            setErrorFor(fname,'Provided name is too long! not greater than 60 characters'); 
+            return false; 
+        }
+        else if(!isValidName(fnameValue)){
+            setErrorFor(fname,'please provide Secondname do not include any number or symbols'); 
+            return false
+        }
+        else{
+            setSuccessFor(fname);
+            
+        }
+
+        // email field validation 
+
+        if(emailValue === ''){
+            setErrorForEmail(email,'Email field is required!');
+           return false;
+        }else if(!isEmail(emailValue)){
+            setErrorForEmail(email,'invalid email format');
+            return false; 
+            
+        }else{
+            setSuccessForEmail(email);
+            validateTextArea() ;
+        }
+
+    }
+
+
+
+    function setErrorFor(input,message){
+        const inputSection=input.parentElement;
+        const small=inputSection.querySelector('small');
+        small.innerText=message;
+
+        inputSection.className='validation error';
+    }
+
+    function setSuccessFor(input){
+        const inputSection=input.parentElement;
+        inputSection.className=' validation success';
+    }
+    //--------------------------------------------- email validations ------------- 
+    function setErrorForEmail(input,message){
+        const inputSection=input.parentElement;
+        const small=inputSection.querySelector('small');
+        small.innerText=message;
+
+        inputSection.className='comment-input-section-email validation error';
+    }
+
+    function setSuccessForEmail(input){
+        const inputSection=input.parentElement;
+        inputSection.className='comment-input-section-email validation success';
+    }
+
+//---------------------------------------------- comment box validation ----------------
+
+    function setErrorForComment(input,message){
+        const inputSection=input.parentElement;
+        const small=inputSection.querySelector('small');
+        small.innerText=message;
+
+        inputSection.className='comment-input-section-comment validation error';
+    }
+
+    function setSuccessForComment(input){
+        const inputSection=input.parentElement;
+        inputSection.className='comment-input-section-comment validation success';
+    }
+
+
+
+    function isValidName(fname){
+        return /^([a-zA-Z]{8,})+((\s)[a-zA-Z]{2,})?$/.test(fname)
+    }
+
+
+    function isEmail(email){
+        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)
+    }
+
+
+    function validateTextArea(){
+        const messageValue=message.value.trim();
+        if(messageValue === ''){
+            setErrorForComment(message,'Subject field is required!');
+            return false;
+          
+        }else if(messageValue.length<20){
+            setErrorForComment(message,'too short message, atleast 30 character length');
+            return false;
+        }else{
+            setSuccessForComment(message);
+            sendButton.style.pointerEvents = "auto";
+            return true;
+        }
+       
+    }
+
+
+
+   // seting value from local storage of each blog
+
+   const searchParams = new URLSearchParams(window.location.search);
+    const blogText=searchParams.get('id');
+    var data=[];
+    let x = Math.floor((Math.random() * 10) + 1);
+
+    if(localStorage.getItem("formValue")){
+         data=JSON.parse(localStorage.getItem("formValue"));
+        let singleBlog=data[blogText];
+        //console.log(singleBlog)
+        if(singleBlog){
+            document.querySelector(".blog-title h3").innerText=singleBlog.title;
+            document.querySelector(".like-span").innerHTML=(x+4)+' <i class="fa fa-thumbs-up" style="font-size:20px; color:#A53DFF">';
+            document.querySelector(".comment-span").innerHTML=x+ '<i class="fa fa-comments" style="font-size:20px; color:#A53DFF"></i>';
+            document.querySelector(".blog-text").innerHTML=singleBlog.desc;
+            document.querySelector(".comment-date").innerText='created on '+singleBlog.date;
+            document.querySelector(".blog-image").setAttribute("src",singleBlog.img)
+            
+        }
+    }
+
     
 </script>
