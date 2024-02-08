@@ -174,6 +174,7 @@
                             <td>Article titles</td>
                             <td colspan="3">action</td>
                         </tr>
+                    <!--
                         <tr class="table-row">
                             <td>1</td> 
                             <td>23-01-2024</td> 
@@ -214,6 +215,7 @@
                             <td><a href="admin-blog.html"><i class='fa fa-eye' style='font-size:18px;color:#000'></i></a></td>
                             <td><a href="#"><i class='fa fa-trash' style='font-size:18px;color:red'></i></a></td>
                         </tr>
+                    -->
                    </table>
                 </div>
             </div>
@@ -250,6 +252,17 @@ function removeExistingTableRow(){
 
 function crateTable(data){
     let tableRow='';
+    console.log(data)
+    if(data.length<=0){
+
+        tableRow=`<tr class="table-row">
+            <td colspan='7'>
+               <h3>No record in local storage</h3> 
+            </td>        
+           </tr>
+            `
+            table.insertAdjacentHTML('beforeend',tableRow); 
+    }else{
     for(var i=0;i<data.length;i++){
         tableRow=`<tr class="table-row">
             <td>${i+1}</td><td>${data[i].date}</td><td>${data[i].title}</td>
@@ -260,6 +273,7 @@ function crateTable(data){
             `
         table.insertAdjacentHTML('beforeend',tableRow);
     }
+}
 
 }
 

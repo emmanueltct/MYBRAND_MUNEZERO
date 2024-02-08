@@ -75,7 +75,7 @@ const links=document.querySelectorAll(".link li a");
 links.forEach(link=>{
     link.addEventListener('click',()=>{
         removeActive();
-        link.setAttribute('class','active');
+        link.setAttribute('class','activeLink');
     })
 })
 

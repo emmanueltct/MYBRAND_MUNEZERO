@@ -78,7 +78,7 @@
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#blog">Blog</a></li>
                     <li><a href="#contact">contact</a></li>
-                    <li><a class="active" href="login.html">Login</a></li>
+                    <li><a class="activeLink" href="login.html">Login</a></li>
                 </ul>
             </div>
 
@@ -366,6 +366,7 @@
                             <div class="slide-wraper">
                                 <button id="prev-slide" class=" slider-button materil-slider-button"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
                                 <div class="image-list">
+                                    <!--
                                     <div class="image-item">
                                         <img src="img/blog/blog1.png"/>
                                         <div class="blog-card-text">
@@ -511,6 +512,7 @@
                                             </div>
                                         </div> 
                                     </div>
+                                     -->
                                 </div>
                                 <button id="next-slide" class="slider-button"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
                             </div>
@@ -951,6 +953,11 @@ if(localStorage.getItem("formValue")){
             })
 
          data=JSON.parse(localStorage.getItem("formValue"));
+         if(data.length<=0){
+            document.querySelector(".blog-container").style.display='none'
+         }else{
+            document.querySelector(".blog-container").style.display='block'
+         }
 
          for(i=0;i<data.length;i++){
             let x = Math.floor((Math.random() * 100) + 1);
