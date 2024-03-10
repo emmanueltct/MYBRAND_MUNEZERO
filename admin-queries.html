@@ -252,7 +252,19 @@
                    color:red;
                    margin-top:-20px;
                 } 
-                
+           /*--- delete and reply button css ----- */
+           .btn1{
+            cursor: pointer;
+            color: #451b69;
+            border-radius:5px;
+            border:1px solid  #451b69;
+            padding:4px;
+            width:70px;
+
+           }  
+           .queries-list {
+            height:100vh;
+           }
     
     </style>
     </head>
@@ -319,13 +331,14 @@
                 </div>
             </div>
         </div>
+        <div id="snackbar"></div>
         <div class="right-side" id="right-side" >
             <div class="user-info">
                 <div class="user-info-box1">
                     <button id="show-menu" onclick="showMenu()"><img src="img/menu.svg" width="18px"></button> 
                     <button id="close-menu"  onclick="closeMenu()"><i class="fa fa-close" style="font-size:30px;color:#A53DFF"></i></button>
                     <div class="user">Munezero Emmanuel</div>
-                    <a href="index.html"><button class="logout">logout</button></a>
+                    <a href="#"><button onclick="userLogout()" class="logout">logout</button></a>
                 </div>
             </div>
             <div class="queries-container">
@@ -333,160 +346,29 @@
                 <h3>Clients ‘ Queries </h3>
                </div>
                 <div class="queries-list">
-                    <div class="user-query">
-                        <div class="sender-profile">
-                            <div class="profile-container">
-                                <div class="sender-info">
-                                    <span>Emmanuel Munezero</span>
-                                    <span class="budget-span" style="font-size:14px;margin-top:-15px ;width:100%;">Budget: 100$ </span>
-                                </div>
-                            </div>
-                            <div class="sender-contact">
-                                <div class="sender-contact-address">
-                                    <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>   KG 147 St, Kigali, Rwanda
-                                </div>
-                                <div class="sender-contact-mail">
-                                    <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
-                                      emmanue@gmail.com 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sender-message">
-                            <span class="sender-message-subject">
-                                submission for project proposal
-                            </span>
-                            <span class="sender-message-line"></span>
-                            <span class="sender-message-text">
-                                <input type="checkbox" class="checkbox-in" id="ch0" />
-                                <span class="sent-message"> 
-                                    <!-- this work on less text --> 
-                                </span>
-                                <span class="sent-message-full">
-                                Lorem ipsum dolor sit amet, consectetur 
-                                adipiscing elit. Nulla purus arcu, varius 
-                                eget velit non, laoreet imperdiet orci. 
-                                Mauris ultrices eget lorem ac vestibulum. 
-                                Suspendis imperdiet, Lorem ipsum dolor
-                                </span>
-                                <label for="ch0">Read more</label> 
-                            </span>
-                        </div>
-                    </div>
-                    <div class="user-query">
-                        <div class="sender-profile">
-                            <div class="profile-container">
-                                <div class="sender-info">
-                                    <span>Emmanuel Munezero</span>
-                                    <span class="budget-span" style="font-size:14px;margin-top:-15px">Budget: 100$ </span>
-                                </div>
-                            </div>
-                            <div class="sender-contact">
-                                <div class="sender-contact-address">
-                                    <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>  
-                                     KG 147 St, Kigali, Rwanda
-                                </div>
-                                <div class="sender-contact-mail">
-                                    <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
-                                      emmanue@gmail.com 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sender-message">
-                            <span class="sender-message-subject">
-                                Request for patnering in project implementation
-                            </span>
-                            <span class="sender-message-line"></span>
-                            <span class="sender-message-text">
-                                <input type="checkbox" class="checkbox-in" id="ch1" />
-                                <span class="sent-message"> 
-                                    <!-- this work on less text --> 
-                                </span> 
-                                <span class="sent-message-full">
-                                Lorem ipsum dolor sit amet, consectetur 
-                                adipiscing elit. Nulla purus arcu, varius 
-                                eget velit non, laoreet imperdiet orci. 
-                                Mauris ultrices eget lorem ac vestibulum. 
-                                Suspendis imperdiet, Lorem ipsum dolor
-                                </span>
-                                <label for="ch1">Read more</label> 
-                            </span>
-                        </div>
-                    </div>
-                    <div class="user-query">
-                        <div class="sender-profile">
-                            <div class="profile-container">
-                                <div class="sender-info">
-                                    <span>Emmanuel Munezero</span>
-                                    <span class="budget-span" style="font-size:14px;margin-top:-15px">Budget: 100$ </span>
-                                </div>
-                            </div>
-                            <div class="sender-contact">
-                                <div class="sender-contact-address">
-                                    <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>   KG 147 St, Kigali, Rwanda
-                                </div>
-                                <div class="sender-contact-mail">
-                                    <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
-                                      emmanue@gmail.com 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sender-message">
-                            <span class="sender-message-subject">
-                                Subject for client query
-                            </span>
-                            <span class="sender-message-line"></span>
-                            <span class="sender-message-text">
-                                <input type="checkbox" class="checkbox-in" id="ch2" />
-                                <span class="sent-message"> 
-                                    <!-- this work on less text --> 
-                                </span>
-                                <span class="sent-message-full">
-                                Lorem ipsum dolor sit amet, consectetur 
-                                adipiscing eli
-                                </span>
-                                <label for="ch2">Read more</label> 
-                            </span>
-                        </div>
-                    </div>
+                 <!-- client querries should be dispalyed here-->
                 </div>
                
             </div>
+            <div class="footer-section">
+                Copyright © 2022 Emmanuel
+            </div>
         </div> 
+        
     </div>
       
-    <div class="footer-section">
-        Copyright © 2022 Emmanuel
-    </div>  
+     
     </body>
 </html>
 
 <script src="js/admin-menu.js"></script>
+<script src="js/toastmessage.js"></script>
+<script src="js/authchecks.js"></script>
+<script src="js/client-query-api.js"></script>
 <script>
-    const userComment=document.getElementsByClassName("sender-message-text");
-    var length=userComment.length;
 
-for(var i=0;i<length;i++){
-    var innerblock=userComment[i].childNodes[5].innerText;
-     var lessTexT=userComment[i].childNodes[3];
-     var checkbox=userComment[i].childNodes[1];
-     var showButton=userComment[i].childNodes[7];
-     //console.log(userComment[i].childNodes);
-
-     let newStr = innerblock.replace(/\s+/g, ' ');
+fetchQuerries()
     
-
-    if(newStr.length>150){
-        var newText=newStr.trim().substring(0,80)+".....";  
-        lessTexT.innerText=newText;
-    }else{
-       lessTexT.style.display="none" ;
-       showButton.style.display="none";
-       userComment[i].childNodes[5].innerText=newStr
-       userComment[i].childNodes[5].style.display="flex";
-    }
-
-      
-    };
     
     
 </script>

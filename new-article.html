@@ -99,6 +99,26 @@
             width:15%;
             cursor: pointer;
         }
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #462dc2;
+            border-bottom-color: #FF3D00;
+            border-radius: 50%;
+            display: none;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+            }
+
+            @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+            } 
+        
     </style>
     </head>
     <body>
@@ -164,6 +184,7 @@
                 </div>
             </div>
         </div>
+        <div id="snackbar"></div>
         <div class="right-side" id="right-side" >
             <div class="user-info">
                 
@@ -171,19 +192,25 @@
                     <button id="show-menu" onclick="showMenu()"><img src="img/menu.svg" width="18px"></button> 
                     <button id="close-menu"  onclick="closeMenu()"><i class="fa fa-close" style="font-size:30px;color:#A53DFF"></i></button>
                     <div class="user">Munezero Emmanuel</div>
-                    <a href="index.html"><button class="logout">logout</button></a>
+                    <a href="#"><button onclick="userLogout()" class="logout">logout</button></a>
                 </div>
             </div>
             <div class="blog-form-container">
                <div class="page-title">
                 <h3>post new article / blog here</h3>
                </div>
+               <div class="form-error"></div>
                <div class="form-container">
                 <form class="article-form" id="article-form" method="post">
                     <div class="input-section">
                         <label>Blog Title:</label>
                         <input class="input" id="article-title" name="article-title" type="" value=""/>
                         <small id="article-error"></small>
+                    </div>
+                    <div class="input-section">
+                        <label>Blog intro:</label>
+                        <textarea class="input" style="width:100%;box-sizing: border-box;border-radius:10px;" id="intro"  cols="5" rows="6" onchange="validateBlogIntro()"></textarea>
+                        <small id="intro-error"></small>
                     </div>
                    <div class="input-section">
                         <label id="blog-thumbnail-label">Select Blog Thumbnail:</label>
@@ -202,6 +229,7 @@
                         </textarea>
                     </div>
                     <div class="input-section">
+                        <span class="loader"></span>
                         <button class="submit-button" id="newArticle">
                             <span>Post Article</span>
                             <img src="img/Paper Plane.png" style="width:24px;height:24px;"/>
@@ -210,6 +238,7 @@
                         <button class="submit-button" id="updateArticle">
                             <span>Update Article</span>
                         </button>
+                        
                     </div>
                 </form>
             </div>
@@ -225,6 +254,9 @@
 </html>
 
 <script src="js/admin-menu.js"></script>
+<script src="js/toastmessage.js"></script>
+<script src="js/authchecks.js"></script>
+<script src="js/create-blog-api.js"></script>
 <script>
     
     var editor1 = new RichTextEditor("#inp_editor1");
@@ -233,7 +265,7 @@
     const form=document.getElementById('article-form')
     const title=document.getElementById("article-title");
     const thumbnail=document.getElementById('thumbnail');
-
+    const blogIntro=document.getElementById('intro');
     const buttons=document.querySelectorAll('.submit-button');
     const updatearticle=document.getElementById('updateArticle');
     const newArticle=document.getElementById('newArticle');
@@ -261,124 +293,52 @@
         //handleInputs();
 
         if(handleInputs() && validateImage() && validateRichText()){
-            const form = new FormData(e.target);
-            article = form.get("article-title");
-             image=form.get('image');
-            desc=form.get('description');
-
-            
-    
+           
+            article =document.getElementById("article-title").value;
+            image=document.getElementById('thumbnail').files[0]
+            desc=document.getElementById('inp_editor1').value;
+            let intro=document.getElementById("intro").value;
+           
             if(clickedButtton=="newArticle"){
-                
-               storeNewArticle(date,article,image,desc) 
+                formData=new FormData()
+                formData.append('title',article)
+                formData.append('image',image)
+                formData.append('blogIntro',intro)
+                formData.append('content',desc)
+                createBlog(formData)  
             }
 
             if(clickedButtton=="updateArticle"){
-                    
-                   updateArticleFun(date,article,image,desc);
+
+               const formData=new FormData()
+                if(!image){
+                    formData.append('title',article)
+                    formData.append('blogIntro',intro)
+                    formData.append('content',desc)   
+                    /// window.location.href='admin-blog-list.html';
+                }
+             else{
+                    formData.append('title',article)
+                    formData.append('image',image)
+                    formData.append('blogIntro',intro)
+                    formData.append('content',desc)   
+                    // window.location.href='admin-blog-list.html'; 
+
+              }
             
+              updateBlog(formData)
+
+                }      
+                 
             }
-          
-        }else{
-            alert('some of your input is not validated')
-        }
-        
+       
     })
 
-
-
-    /// ------------------- store new articles in local storage -------------------------------------
-
-    function storeNewArticle(date,article,image,desc){
-
-        var storedData=[];
-        if(localStorage.getItem("formValue")){
-            const oldData=JSON.parse(localStorage.getItem("formValue"));
-            storedData=oldData;
-        }
-        
-        var id=storedData.length + 1;
-
-        const reader=new FileReader();
-        reader.addEventListener('load',()=>{
-            img=reader.result;
-            var data={
-                    id:id,
-                    date:date,
-                    title:article,
-                    img:img,
-                    desc:desc
-                }
-            storedData.push(data);
-            localStorage.setItem("formValue", JSON.stringify(storedData));   
-            alert ('new Article saved successful');
-            window.location.href='admin-blog-list.html';
-
-            })
-         reader.readAsDataURL(image) 
-   
-
-       
-        //const getData=localStorage.getItem("formValue");
-    }
-
-
-    //------------------------ local storage get and update a single blog ----------------------------------------
-
-    const searchParams = new URLSearchParams(window.location.search);
-    const blogText=searchParams.get('updateBlog');
-    var blogData=[];
-
-    if(blogText){
-        newArticle.style.display='none' ;
-        updatearticle.style.display='block';
-        document.querySelector('.old-thumbnail').style.display='flex';
-        document.getElementById('blog-thumbnail-label').innerText='Existing Thumbnail for this blog'
-        thumbnail.style.display='none';
-        
-
-    if(localStorage.getItem("formValue")){
-         blogData=JSON.parse(localStorage.getItem("formValue"));
-        let singleBlog=blogData[blogText];
-        if(singleBlog){
-            document.getElementById("article-title").value=singleBlog.title;
-            document.querySelector(".existing-profile").setAttribute("src",singleBlog.img);
-            document.getElementById("inp_editor1").innerHTML=singleBlog.desc;
-            editor1.setHTML(`${singleBlog.desc}`);
-            
-        }
-    }
-
-}
+    getSingleBlog()
 
 
 function updateArticleFun(date,article,image,desc){
-   if(image.name==''){
-        img=blogData[blogText].img;
-        blogData[blogText].date=date;
-        blogData[blogText].title=article;
-        blogData[blogText].img=img;
-        blogData[blogText].desc=desc;
-        localStorage.setItem("formValue", JSON.stringify(blogData));
-        alert ('data updated');
-        window.location.href='admin-blog-list.html';
-   }
-   else{
-     const reader=new FileReader();
-        reader.addEventListener('load',()=>{
-            img=reader.result;
-            blogData[blogText].date=date;
-            blogData[blogText].title=article;
-            blogData[blogText].img=img;
-            blogData[blogText].desc=desc;
-            localStorage.setItem("formValue", JSON.stringify(blogData));
-            alert ('data updated');
-            window.location.href='admin-blog-list.html';
-           // updateArticleFun(date,article,img,desc);
-        })
-    reader.readAsDataURL(image) 
-   // console.log(img)
-   }
+   
      /*  
     blogData[blogText].date=date;
     blogData[blogText].title=article;
@@ -407,13 +367,14 @@ function updateArticleFun(date,article,image,desc){
     function handleInputs(){
         
         const titleValue=title.value.trim();
-     
+        
+
         if(titleValue ===''){
             title.style.border='1px solid red';
             document.getElementById("article-error").innerText='Article title is required';
             return false;
-        }else if(titleValue.length<10){
-            document.getElementById("article-error").innerText='Article title should be atleast more than 10 characters'; 
+        }else if(titleValue.length<20){
+            document.getElementById("article-error").innerText='Article title should be atleast more than 20 characters'; 
             return false;
         }
         else if(titleValue.length>100){
@@ -423,21 +384,45 @@ function updateArticleFun(date,article,image,desc){
         else{
             title.style.border='1px solid #A53DFF';
             document.getElementById("article-error").innerText='';  
+            validateBlogIntro() ;
+            return true;
+            
+        }
+
+    }
+        // thumbnail validation ----------------------------------------
+    
+    function validateBlogIntro(){
+        const blogIntroValue=blogIntro.value.trim();
+        if(blogIntroValue ===''){
+            blogIntro.style.border='1px solid red';
+            document.getElementById("intro-error").innerText='blog introduction is required';
+            return false;
+        }else if(blogIntroValue.length<50){
+            document.getElementById("intro-error").innerText='blog introduction should be atleast more than 50 characters'; 
+            return false;
+        }
+        else if(blogIntroValue.length>200){
+            document.getElementById("intro-error").innerText='blog introduction should be not greater than 200 characters'; 
+            return false;
+        }
+        else{
+            blogIntro.style.border='1px solid #A53DFF';
+            document.getElementById("intro-error").innerText='';  
             validateImage();
             return true;
             
         }
     }
-        // thumbnail validation ----------------------------------------
-    
     function validateImage(){
         if(clickedButtton=="updateArticle" && thumbnail.value ==''){
                return true;
             }else{
+                if(thumbnail.value !==""){
                 let selectedFile=thumbnail.files[0];
                 let  allowedTypes = ['image/jpeg', 'image/png', 'img/jpg','image/webp'];
-
-                if (!allowedTypes.includes(selectedFile.type)) {
+                
+                 if (!allowedTypes.includes(selectedFile.type)) {
                     thumbnail.style.border='1px solid red';
                     thumbnail.value = '';
                     document.getElementById('thumbnail-error').innerText='Invalid file type. Please upload a JPEG, JPG, PNG, or WEBP';
@@ -452,13 +437,13 @@ function updateArticleFun(date,article,image,desc){
                     document.getElementById('thumbnail-error').innerText='';
                     validateRichText();
                 }
-
+              }
             }
 
        // console.log('its working');
-
-
-
+       const searchParams2 = new URLSearchParams(window.location.search);
+       const blogText=searchParams2.get('updateBlog');
+            console.log('blog',blogText)
        if(!blogText){
 
         let selectedFile=thumbnail.files[0];

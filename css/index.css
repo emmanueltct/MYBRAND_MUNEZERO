@@ -214,7 +214,6 @@ ul li:hover, ul li button:hover{
     align-items: center;
     gap: 12px;
     border-radius: 4px;
-    background:  #A53DFF;
     margin-top:-10px;
     border:none;
 }
@@ -1242,6 +1241,7 @@ section{
                 cursor:pointer;
             }
        .blog-card-text .main-title a{
+      
             padding: 1% 4%;
             color: #132238;
             font-family: Work Sans;
@@ -2010,3 +2010,123 @@ section{
         border:none;
         color: #FFF;
        }
+
+       /* showing message for some actions on the page */
+
+       #snackbar {
+        visibility: hidden;
+        min-width: 250px;
+        margin-left: -125px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 2px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        bottom: 250px;
+        font-size: 17px;
+      }
+      
+      #snackbar.show {
+        visibility: visible;
+        -webkit-animation: fadein 1s, fadeout 1s 3.5s;
+        animation: fadein 1s, fadeout 1s 3.5s;
+      }
+      
+      @-webkit-keyframes fadein {
+        from {bottom: 0; opacity: 0;} 
+        to {bottom: 30px; opacity: 1;}
+      }
+      
+      @keyframes fadein {
+        from {bottom: 0; opacity: 0;}
+        to {bottom: 250px; opacity: 1;}
+      }
+      
+      @-webkit-keyframes fadeout {
+        from {bottom: 250px; opacity: 1;} 
+        to {bottom: 0; opacity: 0;}
+      }
+      
+      @keyframes fadeout {
+        from {bottom: 250px; opacity: 1;}
+        to {bottom: 0; opacity: 0;}
+      }
+
+
+      /* data loading icons style ----------------- */
+      .loader {
+        width: 48px;
+        height: 48px;
+        border: 3px solid #070907cb;
+        border-radius: 50%;
+        display:none;
+        position: relative;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+      }
+      .loader::after {
+        content: '';  
+        box-sizing: border-box;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 3px solid;
+        border-color: #FF3D00 transparent;
+      }
+      
+      @keyframes rotation {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      } 
+
+      /* user login dropdown css styling here ------------------------------------- */
+
+        .dropbtn {
+            background-color: #2B384C;
+            color: white;
+            padding: 5px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .dropbtn:hover, .dropbtn:focus {
+            background-color: #85152d;
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropdown a:hover {background-color: #ddd;}
+        
+        .show {display: block;}
