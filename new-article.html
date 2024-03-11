@@ -488,10 +488,10 @@ function updateArticleFun(date,article,image,desc){
         const articleText=editor1.getPlainText().trim();
         var articleError=document.getElementById("articleError");
         //console.log(articleText)
-          if(articleText.length<=100){
+          if(articleText.length<=300){
         
              articleError.style.color='rgb(240, 37, 148)';
-             articleError.innerText='The article text should be atleast 100 charcters or more';
+             articleError.innerText='The article text should be atleast 300 charcters or more';
              return false;
           }else{
              //console.log(articleText.value);

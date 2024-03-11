@@ -1,6 +1,6 @@
 //let url="https://mybrand-be-3-qrqs.onrender.com"
 let url="https://mybrand-be-3-qrqs.onrender.com"
-
+let isServerError=false
 const userLogin=async(formData)=>{
     document.querySelector('.loader').style.display='block'
     document.querySelector('.submit-button').style.display='none'
@@ -17,12 +17,13 @@ const userLogin=async(formData)=>{
         .then(data =>{
 
             if(data.inputError){
-              
-                showMessage(data.inputError) 
+               isServerError=true
+                showMessage(data.inputError, isServerError) 
                 document.querySelector('.loader').style.display='none'
                 document.querySelector('.submit-button').style.display='block'
             }else{
-                showMessage(data.message) 
+              isServerError=true
+                showMessage(data.message, isServerError) 
                  document.querySelector('.loader').style.display='none'
                  document.querySelector('.submit-button').style.display='block'
                 if(data.token){
@@ -44,7 +45,8 @@ const userLogin=async(formData)=>{
 
 
 const ridirectUser=async()=>{
-  showMessage('wait for a server redirection .......')
+  isServerError=false
+  showMessage('wait for a server redirection .......', isServerError)
   let token=JSON.parse(localStorage.getItem("token"));
     await fetch(url+'/api/users/auth/verifyToken',{
         headers: {
