@@ -4,7 +4,7 @@
     let url_check="https://mybrand-be-3-qrqs.onrender.com"
     
     document.querySelector('.right-side').style.opacity='0.1'
-      showMessage('wait we are verifying if you have right access to this page ......................')
+    //  showMessage('wait we are verifying if you have right access to this page ......................')
     if(!token){
        window.location.href='login.html'
     }else{
@@ -24,8 +24,9 @@
                   }, 3000);
 
             }else if (result.user!=='admin'){
+              let  isServerError=true
                 const message='Sorry !! you are not allowed to access this page'
-                 showMessage(message)
+                 showMessage(message,isServerError)
                 setTimeout(() => {
                     window.location.href='index.html'
                   }, 3000);    

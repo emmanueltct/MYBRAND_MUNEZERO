@@ -3,6 +3,7 @@ const eachCard=document.querySelectorAll('.image-item')
 
  const url="https://mybrand-be-3-qrqs.onrender.com"
  document.querySelector('.loaders').style.display='flex'
+ document.querySelector('.blog-container').style.display="none"
 let output=''
 
 
@@ -21,6 +22,7 @@ await  fetch(url+'/api/blogs')
 .then(result=>{
 
     document.querySelector('.loaders').style.display='none'
+    document.querySelector('.blog-container').style.display="block"
     result.data.forEach(blog => {
         // console.log(blog)
         

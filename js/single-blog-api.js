@@ -18,7 +18,7 @@ const blogId=searchParams.get('id');
 // import { url } from "./blog-index-api";
 
 const url="https://mybrand-be-3-qrqs.onrender.com"
-
+let isServerError=false
 
 const isValidToken=()=>{
     let token=JSON.parse(localStorage.getItem("token"));
@@ -33,9 +33,13 @@ const isValidToken=()=>{
 
 
 const fetchSingleBlog=async()=>{
+    document.querySelector('.loaders').style.display='flex'
+    document.querySelector('.blog-comment-section').style.display="none"
   await fetch(url+'/api/blogs/'+blogId)
   .then(res=>res.json())
   .then(result=>{
+        document.querySelector('.loaders').style.display='none'
+        document.querySelector('.blog-comment-section').style.display="flex"
          if(result.data){
              const data=result.data;
              title.innerHTML=data.title
@@ -150,8 +154,10 @@ const createLike=async()=>{
       }).then(response => {
         const status=response.status
         if(status==401){
+
             const msg='This action require authentication. please login to continue'
-            showMessage(msg)
+            isServerError=true
+            showMessage(msg,isServerError)
             setTimeout(() => {
                 window.location.href='login.html'
               }, 3000)
@@ -159,7 +165,8 @@ const createLike=async()=>{
          return response.json()
         })
         .then(data =>{
-            showMessage(data.message)
+            isServerError=false
+            showMessage(data.message,isServerError)
             fetchSingleBlogLikes()
             document.querySelector(".user-like").style.display='block'
             document.querySelector('.loader1').style.visibility='hidden'
@@ -169,6 +176,7 @@ const createLike=async()=>{
 
 
     const createComment=async(formData)=>{
+
         document.querySelector(".sendButton").style.display='none'
         document.querySelector('.loader').style.display='block' 
 
@@ -186,7 +194,8 @@ const createLike=async()=>{
             if(status==401){
 
                 const msg='This action require authentication. please login to continue'
-                showMessage(msg)
+                isServerError=true
+                showMessage(msg,isServerError)
                 setTimeout(() => {
                     window.location.href='login.html'
                   }, 3000)
@@ -197,9 +206,11 @@ const createLike=async()=>{
                 if(data){
                     //console.log(data)
                     if(data.error){
-                       showMessage(data.error)
+                        isServerError=true
+                       showMessage(data.error,isServerError)
                     }else{
-                        showMessage(data.message)
+                        isServerError=false
+                        showMessage(data.message,isServerError)
                         document.querySelector("label").innerHTML=`<span>Comment</span>`
                         document.querySelector("label").style.color='black'
                         document.getElementById("commentform").reset();
