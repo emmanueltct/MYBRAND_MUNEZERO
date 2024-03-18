@@ -5,8 +5,14 @@
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
         <title> My Brand page</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/index.css"/>
+
         <style>
             .input-section{
                 position:relative;
@@ -104,7 +110,7 @@
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#blog">Blog</a></li>
                     <li><a href="#contact">contact</a></li>
-                    <li><a class="activeLink" href="login.html">Login</a></li>
+                    <li id="loginLink"><a class="activeLink " href="login.html">Login</a></li>
                 </ul>
             </div>
 
@@ -392,159 +398,9 @@
                             <div class="loaderBlog"></div> 
                             <div class="loaderBlog"></div>  
                         </div>
-                        <div class="blog-container">
+                        <div class="blog-container" id="imageList">
                             <div class="slide-wraper">
-                                <button id="prev-slide" class=" slider-button materil-slider-button"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
-                                <div class="image-list">
-                                    <!--
-                                    <div class="image-item">
-                                        <img src="img/blog/blog1.png"/>
-                                        <div class="blog-card-text">
-                                            <div class="fun-fact">
-                                                <span>Published on: 22 Oct, 2020 [1]</span>
-                                            </div>
-                                            <div class="main-title"><a href="blog.html">the first blog title should be here</a></div>
-                                            <div class="single-blog-title">
-                                                Lorem ipsum dolor sit consea. Nulla purus arcu  property specifies 
-                                            </div>
-                                            <div class="fun-fact">
-                                                <span>13 <i class="fa fa-thumbs-up" style="font-size:15px; color:#A53DFF"></i> </span>
-                                                <span>2 <i class="fa fa-comments" style="font-size:15px; color:#A53DFF"></i></span>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                    <div class="image-item">
-                                        <img src="img/blog/blog1.png"/>
-                                        <div class="blog-card-text">
-                                            <div class="fun-fact">
-                                                <span>Published on: 22 Oct, 2020 [2]</span>
-                                            </div>
-                                            <div class="main-title"><a href="blog.html">the first blog title should be here</a></div>
-                                            <div class="single-blog-title">
-                                                Lorem ipsum dolor sit consea. Nulla purus arcu  property specifies 
-                                            </div>
-                                            <div class="fun-fact">
-                                                <span>13 <i class="fa fa-thumbs-up" style="font-size:15px; color:#A53DFF"></i> </span>
-                                                <span>2 <i class="fa fa-comments" style="font-size:15px; color:#A53DFF"></i></span>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                    <div class="image-item">
-                                        <img src="img/blog/blog1.png"/>
-                                        <div class="blog-card-text">
-                                            <div class="fun-fact">
-                                                <span>Published on: 22 Oct, 2020 [3]</span>
-                                            </div>
-                                            <div class="main-title"><a href="blog.html">the first blog title should be here</a></div>
-                                            <div class="single-blog-title">
-                                                Lorem ipsum dolor sit consea. Nulla purus arcu  property specifies 
-                                            </div>
-                                            <div class="fun-fact">
-                                                <span>13 <i class="fa fa-thumbs-up" style="font-size:15px; color:#A53DFF"></i> </span>
-                                                <span>2 <i class="fa fa-comments" style="font-size:15px; color:#A53DFF"></i></span>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                    
-                                    <div class="image-item">
-                                        <img src="img/blog/blog4.png"/>
-                                        <div class="blog-card-text">
-                                            <div class="fun-fact">
-                                                <span>Published on: 22 Oct, 2020 [4]</span>
-                                            </div>
-                                            <div class="main-title"><a href="blog.html" >the  third blog title should be here</a></div>
-                                            <div class="single-blog-title">
-                                                Lorem ipsum dolor sit consea. Nulla purus arcu  property specifies 
-                                            </div>
-                                            <div class="fun-fact">
-                                                <span>13 <i class="fa fa-thumbs-up" style="font-size:15px; color:#A53DFF"></i> </span>
-                                                <span>2 <i class="fa fa-comments" style="font-size:15px; color:#A53DFF"></i></span>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                    <div class="image-item">
-                                        <img src="img/blog/blog2.png" alt=""/>
-                                        <div class="blog-card-text">
-                                            <div class="fun-fact">
-                                                <span>Published on: 22 Oct, 2020 [5]</span>
-                                            </div>
-                                            <div class="main-title"><a href="blog.html" >the  fourth blog title should be here</a></div>
-                                            <div class="single-blog-title">
-                                                Lorem ipsum dolor sit consea. Nulla purus arcu  property specifies 
-                                            </div>
-                                            <div class="fun-fact">
-                                                <span>13 <i class="fa fa-thumbs-up" style="font-size:15px; color:#A53DFF"></i> </span>
-                                                <span>2 <i class="fa fa-comments" style="font-size:15px; color:#A53DFF"></i></span>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                    <div class="image-item">
-                                        <img src="img/blog/blog3.png" alt=""/>
-                                        <div class="blog-card-text">
-                                            <div class="fun-fact">
-                                                <span>Published on: 22 Oct, 2020 [6]</span>
-                                            </div>
-                                            <div class="main-title"><a href="blog.html" >the fifth blog title should be here</a></div>
-                                            <div class="single-blog-title">
-                                                Lorem ipsum dolor sit consea. Nulla purus arcu  property specifies 
-                                            </div>
-                                            <div class="fun-fact">
-                                                <span>13 <i class="fa fa-thumbs-up" style="font-size:15px; color:#A53DFF"></i> </span>
-                                                <span>2 <i class="fa fa-comments" style="font-size:15px; color:#A53DFF"></i></span>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                    <div class="image-item">
-                                        <img src="img/blog/blog4.png" alt=""/>
-                                        <div class="blog-card-text">
-                                            <div class="fun-fact">
-                                                <span>Published on: 22 Oct, 2020[7] </span>
-                                            </div>
-                                            <div class="main-title"><a href="blog.html" >the fifth blog title should be here</a></div>
-                                            <div class="single-blog-title">
-                                                Lorem ipsum dolor sit consea. Nulla purus arcu  property specifies 
-                                            </div>
-                                            <div class="fun-fact" >
-                                                <span>13 <i class="fa fa-thumbs-up" style="font-size:15px; color:#A53DFF"></i> </span>
-                                                <span>2 <i class="fa fa-comments" style="font-size:15px; color:#A53DFF"></i></span>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                    <div class="image-item">
-                                        <img src="img/blog/blog4.png" alt=""/>
-                                        <div class="blog-card-text">
-                                            <div class="fun-fact">
-                                                <span>Published on: 22 Oct, 2020[8] </span>
-                                            </div>
-                                            <div class="main-title"><a href="blog.html" >the fifth blog title should be here</a></div>
-                                            <div class="single-blog-title">
-                                                Lorem ipsum dolor sit consea. Nulla purus arcu  property specifies 
-                                            </div>
-                                            <div class="fun-fact" >
-                                                <span>13 <i class="fa fa-thumbs-up" style="font-size:15px; color:#A53DFF"></i> </span>
-                                                <span>2 <i class="fa fa-comments" style="font-size:15px; color:#A53DFF"></i></span>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                    <div class="image-item">
-                                        <img src="img/blog/blog4.png" alt=""/>
-                                        <div class="blog-card-text">
-                                            <div class="fun-fact">
-                                                <span>Published on: 22 Oct, 2020[9] </span>
-                                            </div>
-                                            <div class="main-title"><a href="blog.html" >the fifth blog title should be here</a></div>
-                                            <div class="single-blog-title">
-                                                Lorem ipsum dolor sit consea. Nulla purus arcu  property specifies 
-                                            </div>
-                                            <div class="fun-fact" >
-                                                <span>13 <i class="fa fa-thumbs-up" style="font-size:15px; color:#A53DFF"></i> </span>
-                                                <span>2 <i class="fa fa-comments" style="font-size:15px; color:#A53DFF"></i></span>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                     -->
-                                </div>
-                                <button id="next-slide" class="slider-button"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+                                
                             </div>
                             <div class="slider-scrollbar">
                                 <div class="scrollbar-track">
@@ -668,111 +524,9 @@
             </section>
               <!--this the strting point of contact section and help us to interact with client -------------------------->
             <section id="contact" class="contact-section">
-                <div class="contact-container">
-                <div class="contact-address-section">
-                    <div class="contact-description">
-                        <span>Let’s discuss your Project</span>
-                        <p>There are many variations of passages of Lorem Ipsu available.
-                            but the majority have suffered alte.
-                        </p>
-                    </div>
-                    <div class="address-card">
-                        <div class="card-icon" style="background-color: #A53DFF ;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M18 4.47991C16.4087 2.88861 14.2504 1.99463 12 1.99463C9.74955 1.99463 7.59129 2.88861 5.99999 4.47991C4.40869 6.07121 3.51471 8.22947 3.51471 10.4799C3.51471 12.7303 4.40869 14.8886 5.99999 16.4799L11.27 21.7599C11.363 21.8536 11.4736 21.928 11.5954 21.9788C11.7173 22.0296 11.848 22.0557 11.98 22.0557C12.112 22.0557 12.2427 22.0296 12.3646 21.9788C12.4864 21.928 12.597 21.8536 12.69 21.7599L18 16.4299C19.5846 14.8452 20.4749 12.696 20.4749 10.4549C20.4749 8.21386 19.5846 6.06459 18 4.47991ZM16.57 14.9999L12 19.5899L7.42999 14.9999C6.52713 14.0962 5.91247 12.9452 5.66369 11.6922C5.4149 10.4392 5.54318 9.14066 6.03229 7.96059C6.52141 6.78052 7.34941 5.77196 8.41162 5.06239C9.47383 4.35281 10.7226 3.97409 12 3.97409C13.2774 3.97409 14.5261 4.35281 15.5884 5.06239C16.6506 5.77196 17.4786 6.78052 17.9677 7.96059C18.4568 9.14066 18.5851 10.4392 18.3363 11.6922C18.0875 12.9452 17.4728 14.0962 16.57 14.9999ZM8.99999 7.40991C8.19271 8.21968 7.73939 9.31648 7.73939 10.4599C7.73939 11.6033 8.19271 12.7001 8.99999 13.5099C9.59975 14.1107 10.3636 14.521 11.1956 14.6893C12.0277 14.8576 12.8909 14.7765 13.6771 14.4561C14.4632 14.1356 15.1372 13.5902 15.6145 12.8882C16.0918 12.1861 16.3511 11.3588 16.36 10.5099C16.3645 9.94311 16.2553 9.38117 16.0389 8.8573C15.8225 8.33343 15.5032 7.85827 15.1 7.45991C14.7037 7.05449 14.2311 6.73145 13.7094 6.50938C13.1878 6.2873 12.6273 6.17059 12.0604 6.16594C11.4935 6.16129 10.9312 6.26881 10.406 6.4823C9.88073 6.69579 9.40291 7.01104 8.99999 7.40991ZM13.69 12.0899C13.311 12.4747 12.8102 12.7158 12.2731 12.7722C11.736 12.8285 11.1961 12.6966 10.7455 12.3988C10.2949 12.1011 9.96179 11.6562 9.803 11.14C9.64421 10.6238 9.66964 10.0685 9.87495 9.56907C10.0803 9.06958 10.4527 8.65693 10.9286 8.40165C11.4045 8.14637 11.9542 8.06432 12.4839 8.16953C13.0136 8.27474 13.4903 8.56067 13.8325 8.97844C14.1747 9.39621 14.3612 9.91988 14.36 10.4599C14.3454 11.0772 14.0865 11.6634 13.64 12.0899H13.69Z" fill="white"/>
-                            </svg>
-                        </div>
-                        <div class="card-text">
-                            <span>Address:</span>
-                            <p>New Mexico 31134</p>
-                        </div>
-                    </div>
-                    <div class="address-card">
-                        <div class="card-icon">
-                            <span style="color: #A53DFF;width:24px;height:24px;" ><i class="fa fa-envelope" style="width:100%;" aria-hidden="true"></i></span>
-                        </div>
-                        <div class="card-text">
-                            <span>My Email:</span>
-                            <p>mymail@mail.com</p>
-                        </div>
-                    </div>
-
-                    <div class="address-card">
-                        <div class="card-icon">
-                            <span style="color: #A53DFF;width:24px;height:24px;" ><i class="fa fa-phone" style="width:100%;" aria-hidden="true"></i></span>
-                        </div>
-                        <div class="card-text">
-                            <span>Call Me Now:</span>
-                            <p>00-1234 00000</p>
-                        </div>
-                    </div>
-                    <div class="contact-social-media">
-                            <span style="border-radius: 4px; background:#A53DFF; box-shadow: 0px 12px 64px 0px rgba(28, 25, 25, 0.12);"><img src="img/Social-f.svg"></span>
-                            <span><img src="img/instagram.svg"></span>
-                            <span><img src="img/Social-l.svg" /></span>
-                            
-                    </div>
-                </div>
-                <div class="contact-form-container">
-                    <div class="header-paragraph">
-                        There are many variations of passages of Lorem Ipsu available,
-                        but the majority have suffered alte.
-                    </div>
-                    <div class="contact-form">
-                        <div id="snackbar"></div>
-                        <form  id="contact-form" class="form-fieldset">
-                            <div class="input-section">
-                                <label style="color: #A53DFF;">Name *</label>
-                                <input id="names" type="text" value="" />
-                                <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                                <small>Erron message</small>
-                            </div>
-                            <div  class="input-section">
-                                <label>Email *</label>
-                                <input id="email" type="text" value=""/>
-                                <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                                <small>Erron message</small>
-                            </div>
-                            <div class="input-section">
-                                <label>Location</label>
-                                <input id="location" type="text" value=""/>
-                                <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                                <small>Erron message</small>
-                            </div>
-                            <div class="budget-subject">
-                                <div class="input-section">
-                                    <label>Budget *</label>
-                                    <input id="budget" type="text" value="" style="width:100%"/>
-                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                                    <small>Erron message</small>
-                                </div>
-                                <div class="input-section">
-                                    <label>Subject *</label>
-                                    <input id="subject" type="text" value="" style="width:100%"/>
-                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                                    <small>Erron message</small>
-                                </div>
-                            </div>
-                            <div class="input-section">
-                                <label>Message</label>
-                                <textarea id="message" cols="6" rows="5" onKeyUp='validateTextArea()'></textarea>
-                                <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                                <small>Erron message</small>
-                            </div>
-                            <div class="loader"></div>
-                            <button class="contact-submit-button" id="submit-button" >
-                                <span>Submit</span>
-                                <img src="img/Paper Plane.png" style="width:24px;height:24px;"/>
-                            </button>
-                        </form>
-                    </div>
-                </div>
+                <div id="root1"></div>
+                <div id="root"></div>
+               
             </section>
 
               <!--this the strting point of footer section -------------------------->
@@ -793,243 +547,15 @@
                     <p class="footer-copyright">Copyright &copy 2024 Emmanuel</p>
                 </div>
             </section>
-        
+           
     </body>
 </html>
+
 <script src="js/nav.js"></script>
 <script src="js/toastmessage.js"></script>
-<script src="js/blog-index-api.js"></script>
-<script src="js/slide2.js"></script>
 <script src="js/userToken.js"></script>
 
+<script type="text/babel" src="./components/contact.js"></script>
+<script type="text/babel" src="./components/blog-list.js"></script>
+<script src="js/slide2.js"></script>
 
-
-<script>
-    const form=document.getElementById("contact-form");
-    const input=document.querySelectorAll(".input-section input");
-    const names=document.getElementById("names");
-    const email=document.getElementById("email");
-    const location2=document.getElementById("location");
-    const budget=document.getElementById("budget");
-    const subject=document.getElementById("subject");
-    const message=document.getElementById("message");
-    const sendButton=document.getElementById("submit-button");
-   
-    sendButton.style.pointerEvents = "none";
-    
-
-    form.addEventListener('submit',(e)=>{
-        e.preventDefault();
-        if(validateInputs() && validateTextArea() ){
-           const data={
-            names:names.value,
-            email:email.value,
-            location:location2.value,
-            budget:budget.value,
-            subject:subject.value,
-            message:message.value
-           }
-           console.log(data)
-           querries(data)
-           
-        }
-    })
-
-   
-    input.forEach(inputElement=>{
-            inputElement.addEventListener('keyup',()=>{                //console.log(inputElement)
-                
-                if(validateInputs()){
-                   validateTextArea()  
-                }
-            })
-        })
-
-       
-    function validateInputs(){
-        const nameValue=names.value.trim();
-        const emailValue=email.value.trim();
-        const locationValue=location2.value.trim();
-        const budgetValue=budget.value.trim();
-        const subjectValue=subject.value.trim();
-    
-
-        // names field validation 
-
-        if(nameValue ===''){
-            setErrorFor(names,'Name field is required!');
-            return false; 
-           
-        }else if(nameValue.length<3){
-            setErrorFor(names,'Provided name is too short! please write both names'); 
-            return false;  
-        }
-        else if(nameValue.length>40){
-            setErrorFor(names,'Provided name is too long! not greater than 40 characters'); 
-            return false; 
-        }
-        else if(!isValidName(nameValue)){
-            setErrorFor(names,'do not include any number or symbols'); 
-            return false
-        }
-        else{
-            setSuccessFor(names);
-            
-        }
-
-        // email field validation 
-
-        if(emailValue === ''){
-            setErrorFor(email,'Email field is required!');
-           return false;
-        }else if(!isEmail(emailValue)){
-            setErrorFor(email,'invalid email format');
-            return false; 
-            
-        }else{
-            setSuccessFor(email);
-        }
-
-        // location input validation 
-
-        if(locationValue ===''){
-
-            setErrorFor(location2,'Location field is required!'); 
-            return false;
-            
-        }else if(locationValue.length<5){
-
-            setErrorFor(location2,'too short text of address location'); 
-            return false;
-        }
-        else{
-            setSuccessFor(location2);
-        }
-
-        // budget input field validation 
-
-        if(budgetValue === ''){
-            setErrorFor(budget,'Budget field is required!');
-            return false;
-        }else if(!isCurrency(budgetValue)){
-            setErrorFor(budget,'invalid currency!!  accepted format be like 100 USD | 100$ |1000 RWF '); 
-            return false;
-        }
-        else{
-            setSuccessFor(budget);
-        }
-
-        // subject input field validation 
-
-        if(subjectValue === ''){
-            setErrorFor(subject,'Subject field is required!');
-            return false;
-    
-        }else if(subjectValue.length<20){
-            setErrorFor(subject,'too short subject input, atleast 20 character length');
-            return false;
-        }
-        else{
-            setSuccessFor(subject);
-        }
-
-        // message input validation 
-
-        return true;
-      
-    }
-
-    function setErrorFor(input,message){
-        const inputSection=input.parentElement;
-        const small=inputSection.querySelector('small');
-        small.innerText=message;
-
-        inputSection.className='input-section error';
-    }
-
-    function setSuccessFor(input){
-        const inputSection=input.parentElement;
-        inputSection.className='input-section success';
-    }
-    
-
-    function isValidName(names){
-        return /^([a-zA-Z]{3,})+((\s)[a-zA-Z]{2,})?$/.test(names)
-    }
-    function isEmail(email){
-        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)
-    }
-    function isCurrency(budget){
-        return /^[0-9]+(\s?)+(rwf|RWF|USD|\$)$/.test(budget);
-    }
-    
-
-    function validateTextArea(){
-        const messageValue=message.value.trim();
-        if(messageValue === ''){
-            setErrorFor(message,'Subject field is required!');
-            return false;
-          
-        }else if(messageValue.length<20){
-            setErrorFor(message,'too short message, atleast 20 character length');
-            return false;
-        }else{
-
-            setSuccessFor(message);
-            sendButton.style.pointerEvents = "auto";
-            return true;
-        }
-       
-    }
-          
-          
-// setting blog value from local storage
-/*
-const cardContainer=document.querySelector('.image-list');
-const eachCard=document.querySelectorAll('.image-item')
-
-
-
-
-
-if(localStorage.getItem("formValue")){
-            eachCard.forEach(card=>{
-                 card.remove();
-            })
-
-         data=JSON.parse(localStorage.getItem("formValue"));
-         if(data.length<=0){
-            document.querySelector(".blog-container").style.display='none'
-         }else{
-            document.querySelector(".blog-container").style.display='block'
-         }
-
-         for(i=0;i<data.length;i++){
-            let x = Math.floor((Math.random() * 100) + 1);
-            document.getElementById('blog-desc').innerHTML=data[i].desc;
-             const fEl= document.getElementById('blog-desc').firstChild.innerText;
-            let element=`
-                        <div class="image-item">
-                                <img src="${data[i].img}" alt="Article image of ${data[i].title} "/>
-                                <div class="blog-card-text">
-                                    <div class="fun-fact">
-                                        <span>Published on:${data[i].date} </span>
-                                    </div>
-                                    <div class="main-title"><a href="blog.html?id=${i}"> ${data[i].title}</a></div>
-                                    <div class="single-blog-title">
-                                       ${fEl?fEl.substring(0, 80)+'...':''}
-                                    </div>
-                                    <div class="fun-fact">
-                                        <span>${x+10} <i class="fa fa-thumbs-up" style="font-size:15px; color:#A53DFF"></i> </span>
-                                        <span>${x} <i class="fa fa-comments" style="font-size:15px; color:#A53DFF"></i></span>
-                                    </div>
-                                </div> 
-                            </div>
-                            `
-                            cardContainer.insertAdjacentHTML('beforeend',element)
-         }
-        
-    }
-*/
-
-</script>
