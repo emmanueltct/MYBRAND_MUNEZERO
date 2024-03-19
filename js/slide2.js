@@ -3,7 +3,6 @@
         const imageList=document.querySelector(".slide-wraper .image-list");
         const sliderButtons=document.querySelectorAll(".slide-wraper .slider-button");
         const sliderScrollbar=document.querySelector(".blog-container .slider-scrollbar");
-        const scrollbarThumb=sliderScrollbar.querySelector(".blog-container .scrollbar-thumb");
         const createDot=document.getElementById("slide-dots");
         let currentSlide=0;
         var activeDot=0; 
@@ -100,34 +99,11 @@
         }
     
         // update scrollbar thumb position based on image csroll 
-       
-        const updateScrollThumbPosition=()=>{
-         var prev=0;
-          const scrollPosition= imageList.scrollLeft;
-          const thumbPosition=(scrollPosition/maxScrollLeft)* (sliderScrollbar.clientWidth -scrollbarThumb.offsetWidth);
-          scrollbarThumb.style.left=thumbPosition+"px";
-           
-        /*
-          prev=activeDot;
-          
-          activeDot= Math.round(scrollPosition/imageList.clientWidth);
-          if(activeDot>prev){
-            document.getElementById(prev).classList.remove("active"); 
-            document.getElementById(activeDot+1).classList.add("active");
-        }
-        
-        if(activeDot<prev){
-            document.getElementById(prev).classList.remove("active"); 
-            document.getElementById(activeDot).classList.add("active"); 
-        }
-          console.log(activeDot+"--"+prev);
-        */
-          
-        } 
+  
     
         imageList.addEventListener("scroll",()=>{
             handleSlideButtons();
-            updateScrollThumbPosition();
+           // updateScrollThumbPosition();
         })
     
     
@@ -135,3 +111,4 @@
     
    
 
+    window.addEventListener("load",initSlider);
