@@ -77,7 +77,7 @@ const SingleBlog = () => {
                 </div>
             </div>
             <div className="blog-text">
-                <p className="blog-intro">{blog.blogIntro}</p>
+                <p className="blog-intro" style={{fontStyle:"italic"}}">" {blog.blogIntro} "</p>
                 <p dangerouslySetInnerHTML={{__html:blog.content}}/>
             </div>
 
